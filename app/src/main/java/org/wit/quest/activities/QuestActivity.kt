@@ -1,7 +1,8 @@
-package org.wit.quest
+package org.wit.quest.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import org.wit.quest.R
 
 class QuestActivity : AppCompatActivity() {
 
