@@ -38,9 +38,30 @@
                     android:fillViewport="true">
 
                 <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content" android:orientation="vertical">
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:orientation="horizontal">
+
+                        <ImageView
+                                android:id="@+id/questImage"
+                                android:layout_width="193dp"
+                                android:layout_height="match_parent"
+                                app:srcCompat="@drawable/hillfort_placeholder"/>
+                        <Button
+                                android:id="@+id/chooseImage"
+                                android:layout_width="157dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                android:background="@color/colorAccent"
+                                android:paddingBottom="8dp"
+                                android:paddingTop="8dp"
+                                android:text="@string/button_addImage"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="16sp"/>
+
+                    </LinearLayout>
                     <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -69,7 +90,8 @@
                                 android:layout_height="wrap_content"
                                 android:inputType="text"
                                 android:ems="10"
-                                android:hint="@string/hint_questCountry" android:layout_weight="1" android:id="@+id/questCountry"/>
+                                android:hint="@string/hint_questCountry" android:layout_weight="1"
+                                android:id="@+id/questCountry"/>
                     </LinearLayout>
                     <EditText
                             android:layout_width="match_parent"
@@ -86,13 +108,15 @@
                                 android:layout_height="wrap_content"
                                 android:inputType="text"
                                 android:ems="10"
-                                android:hint="@string/hint_questLong" android:layout_weight="1" android:id="@+id/questLongtitude"/>
+                                android:hint="@string/hint_questLong" android:layout_weight="1"
+                                android:id="@+id/questLongtitude"/>
                         <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="text"
                                 android:ems="10"
-                                android:hint="@string/hint_questLat" android:layout_weight="1" android:id="@+id/questLatitude"/>
+                                android:hint="@string/hint_questLat" android:layout_weight="1"
+                                android:id="@+id/questLatitude"/>
                     </LinearLayout>
                 </LinearLayout>
 

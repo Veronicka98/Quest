@@ -30,6 +30,7 @@ class QuestMemStore : QuestStore, AnkoLogger {
       foundQuest.townland = quest.townland
       foundQuest.country = quest.country
       foundQuest.location = quest.location
+      foundQuest.image = quest.image
 
       logAll()
     }
