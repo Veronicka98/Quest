@@ -31,94 +31,112 @@
 
             </android.support.design.widget.AppBarLayout>
 
+
+
+
+
             <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/appBarLayout"
                     android:fillViewport="true">
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:orientation="vertical">
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_margin="8dp">
 
-                        <ImageView
-                                android:id="@+id/questImage"
-                                android:layout_width="193dp"
-                                android:layout_height="match_parent"
-                                app:srcCompat="@drawable/hillfort_placeholder"/>
-                        <Button
-                                android:id="@+id/chooseImage"
-                                android:layout_width="157dp"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="16dp"
-                                android:background="@color/colorAccent"
-                                android:paddingBottom="8dp"
-                                android:paddingTop="8dp"
-                                android:text="@string/button_addImage"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="16sp"/>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:orientation="vertical">
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:orientation="vertical">
 
+                            <ImageView
+                                    android:id="@+id/questImage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="160dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/hillfort_placeholder"/>
+
+                            <Button
+                                    android:id="@+id/chooseImage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="16dp"
+                                    android:background="@color/colorAccent"
+                                    android:paddingBottom="8dp"
+                                    android:paddingTop="8dp"
+                                    android:text="@string/button_addImage"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp"/>
+
+                        </LinearLayout>
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:inputType="text"
+                                android:ems="10"
+                                android:hint="@string/hint_questName" android:id="@+id/questName"
+                                android:layout_margin="8dp"/>
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:inputType="date"
+                                android:ems="10"
+                                android:id="@+id/questDate" android:hint="@string/hint_questDate"
+                                android:layout_margin="8dp"/>
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="52dp"
+                                    android:inputType="text"
+                                    android:ems="10"
+                                    android:hint="@string/hint_questTownland" android:layout_weight="1"
+                                    android:id="@+id/questTownland" android:layout_margin="8dp"/>
+                            <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="52dp"
+                                    android:inputType="text"
+                                    android:ems="10"
+                                    android:hint="@string/hint_questCountry" android:layout_weight="1"
+                                    android:id="@+id/questCountry" android:layout_margin="8dp"/>
+                        </LinearLayout>
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:inputType="text"
+                                android:ems="10"
+                                android:hint="@string/hint_questLocation" android:id="@+id/questLocation"
+                                android:layout_margin="8dp"/>
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="52dp"
+                                    android:inputType="text"
+                                    android:ems="10"
+                                    android:hint="@string/hint_questLong" android:layout_weight="1"
+                                    android:id="@+id/questLongtitude" android:layout_margin="8dp"/>
+                            <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="52dp"
+                                    android:inputType="text"
+                                    android:ems="10"
+                                    android:hint="@string/hint_questLat" android:layout_weight="1"
+                                    android:id="@+id/questLatitude" android:layout_margin="8dp"/>
+                        </LinearLayout>
                     </LinearLayout>
-                    <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:ems="10"
-                            android:hint="@string/hint_questName" android:id="@+id/questName"/>
-                    <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="date"
-                            android:ems="10"
-                            android:id="@+id/questDate" android:hint="@string/hint_questDate"/>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                        <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:ems="10"
-                                android:hint="@string/hint_questTownland" android:layout_weight="1"
-                                android:id="@+id/questTownland"/>
-                        <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:ems="10"
-                                android:hint="@string/hint_questCountry" android:layout_weight="1"
-                                android:id="@+id/questCountry"/>
-                    </LinearLayout>
-                    <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:ems="10"
-                            android:hint="@string/hint_questLocation" android:id="@+id/questLocation"/>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                        <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:ems="10"
-                                android:hint="@string/hint_questLong" android:layout_weight="1"
-                                android:id="@+id/questLongtitude"/>
-                        <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:ems="10"
-                                android:hint="@string/hint_questLat" android:layout_weight="1"
-                                android:id="@+id/questLatitude"/>
-                    </LinearLayout>
-                </LinearLayout>
+
+                </android.support.v7.widget.CardView>
 
             </ScrollView>
 

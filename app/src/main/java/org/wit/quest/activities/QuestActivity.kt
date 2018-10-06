@@ -66,6 +66,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       IMAGE_REQUEST -> {
         if (data != null) {
           quest.image = data.getData().toString()
+          info(quest.image)
           questImage.setImageBitmap(readImage(this, resultCode, data))
         }
       }

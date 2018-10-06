@@ -1,5 +1,6 @@
 package org.wit.quest.adaptors
 
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_quest.view.*
 import org.wit.quest.R
 import org.wit.quest.models.QuestModel
+import readImageFromPath
 
 interface QuestListener {
   fun onQuestClick(quest: QuestModel)
@@ -31,9 +33,8 @@ class QuestAdaptor constructor(private var quests: List<QuestModel>,
     fun bind(quest: QuestModel,  listener : QuestListener) {
       itemView.questName.text = quest.name
       itemView.questTownland.text = quest.townland
-      itemView.questCountry.text = quest.country
-      itemView.questLocation.text = quest.location
       itemView.questDate.text = quest.date
+      itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, quest.image))
 
       itemView.setOnClickListener { listener.onQuestClick(quest) }
     }

@@ -27,5 +27,6 @@
     <!--Buttons-->
     <string name="button_addImage">Select Image</string>
     <string name="button_changeImage">Change Image</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
