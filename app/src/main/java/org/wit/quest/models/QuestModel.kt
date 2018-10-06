@@ -17,7 +17,7 @@ data class QuestModel (
     var lat : Double = 0.0,
     var lng: Double = 0.0,
 
-    var Date: String = "",
-    var Rating: Int = 1
+    var date: String = "",
+    var rating: Int = 1
 
 ) : Parcelable

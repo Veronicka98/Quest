@@ -33,6 +33,7 @@ class QuestAdaptor constructor(private var quests: List<QuestModel>,
       itemView.questTownland.text = quest.townland
       itemView.questCountry.text = quest.country
       itemView.questLocation.text = quest.location
+      itemView.questDate.text = quest.date
 
       itemView.setOnClickListener { listener.onQuestClick(quest) }
     }

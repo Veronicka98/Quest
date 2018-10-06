@@ -38,6 +38,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questTownland.setText(quest.townland)
       questLocation.setText(quest.location)
       questCountry.setText(quest.country)
+      questDate.setText(quest.date)
 
       questImage.setImageBitmap(readImageFromPath(this, quest.image))
 
@@ -83,6 +84,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         quest.townland = questTownland.text.toString()
         quest.country = questCountry.text.toString()
         quest.location = questLocation.text.toString()
+        quest.date = questDate.text.toString()
 
         if (edit) {
           app.quests.update(quest.copy())

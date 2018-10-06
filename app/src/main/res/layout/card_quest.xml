@@ -19,10 +19,16 @@
                 android:textSize="30sp"/>
 
         <TextView
-                android:id="@+id/questTownland"
+                android:id="@+id/questDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/questName"/>
+
+        <TextView
+                android:id="@+id/questTownland"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/questDate"/>
 
         <TextView
                 android:id="@+id/questCountry"
