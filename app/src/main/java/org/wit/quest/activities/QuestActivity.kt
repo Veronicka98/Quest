@@ -16,6 +16,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
   lateinit var app : MainApp
   var quest = QuestModel()
+  var edit = false
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -24,6 +25,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     setSupportActionBar(toolbarCreate)
 
     app = application as MainApp
+
+    if (intent.hasExtra("quest_edit")) {
+      quest = intent.extras.getParcelable<QuestModel>("quest_edit")
+
+      questName.setText(quest.name)
+      questTownland.setText(quest.townland)
+      questLocation.setText(quest.location)
+      questCountry.setText(quest.country)
+      edit = true
+    }
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -42,17 +53,24 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         quest.townland = questTownland.text.toString()
         quest.country = questCountry.text.toString()
         quest.location = questLocation.text.toString()
-
-        if (quest.name.isNotEmpty() && quest.townland.isNotEmpty()
-            && quest.country.isNotEmpty() && quest.location.isNotEmpty()) {
-          app.quests.create(quest.copy())
-          info("Add Buttom Pressed")
+        
+        if (edit) {
+          app.quests.update(quest.copy())
+          info("Update Button Pressed")
+          setResult(201)
+          finish()
         } else {
-          toast (R.string.toast_promptAdd)
-        }
+          if (quest.name.isNotEmpty() && quest.townland.isNotEmpty()
+              && quest.country.isNotEmpty() && quest.location.isNotEmpty()) {
+            app.quests.create(quest.copy())
+            info("Add Buttom Pressed")
+          } else {
+            toast (R.string.toast_promptAdd)
+          }
 
-        setResult(200)
-        finish()
+          setResult(200)
+          finish()
+        }
       }
     }
     return super.onOptionsItemSelected(item)
