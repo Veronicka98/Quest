@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Quest</string>
+
+    <!--Menu items-->
+    <string name="menu_add">Add</string>
+    <string name="menu_list">List</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_cancel">Cancel</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_settings">Settings</string>
+
 </resources>
