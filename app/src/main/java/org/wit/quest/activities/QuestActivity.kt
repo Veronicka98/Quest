@@ -6,12 +6,16 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
+import org.jetbrains.anko.toast
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
+import org.wit.quest.models.QuestModel
 
 class QuestActivity : AppCompatActivity(), AnkoLogger {
 
   lateinit var app : MainApp
+  var quest = QuestModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -34,6 +38,19 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         finish()
       }
       R.id.item_save -> {
+        quest.name = questName.text.toString()
+        quest.townland = questTownland.text.toString()
+        quest.country = questCountry.text.toString()
+        quest.location = questLocation.text.toString()
+
+        if (quest.name.isNotEmpty() && quest.townland.isNotEmpty()
+            && quest.country.isNotEmpty() && quest.location.isNotEmpty()) {
+          app.quests.create(quest.copy())
+          info("Add Buttom Pressed")
+        } else {
+          toast (R.string.toast_promptAdd)
+        }
+
         setResult(200)
         finish()
       }
