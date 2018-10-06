@@ -53,7 +53,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         quest.townland = questTownland.text.toString()
         quest.country = questCountry.text.toString()
         quest.location = questLocation.text.toString()
-        
+
         if (edit) {
           app.quests.update(quest.copy())
           info("Update Button Pressed")

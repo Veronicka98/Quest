@@ -18,6 +18,7 @@ class QuestMemStore : QuestStore, AnkoLogger {
   }
 
   override fun create(quest: QuestModel) {
+    quest.id = getId()
     quests.add(quest)
     logAll()
   }
