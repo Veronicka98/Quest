@@ -23,6 +23,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
   lateinit var app : MainApp
   var quest = QuestModel()
+  val location = Location(52.245696, -7.139102, 15f) //default location
   var edit = false
   val IMAGE_REQUEST = 1
   val LOCATION_REQUEST = 2
@@ -42,8 +43,8 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questTownland.setText(quest.townland)
       questCountry.setText(quest.country)
       questDate.setText(quest.date)
-//      questLatitude.setText(quest.lat.toString())
-//      questLongtitude.setText(quest.lng.toString())
+      questLatitude.setText(quest.lat.toString())
+      questLongtitude.setText(quest.lng.toString())
 
       questImage.setImageBitmap(readImageFromPath(this, quest.image))
 
@@ -54,7 +55,6 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     }
 
     questLocation.setOnClickListener {
-      val location = Location(52.245696, -7.139102, 15f)
       if (quest.zoom != 0f) {
         location.lat =  quest.lat
         location.lng = quest.lng
