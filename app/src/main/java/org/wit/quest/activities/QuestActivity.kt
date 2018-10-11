@@ -8,10 +8,13 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.placemark.helpers.showImagePicker
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
+import org.wit.quest.activities.MapsActivity
+import org.wit.quest.models.Location
 import org.wit.quest.models.QuestModel
 import readImage
 import readImageFromPath
@@ -22,6 +25,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
   var quest = QuestModel()
   var edit = false
   val IMAGE_REQUEST = 1
+  val LOCATION_REQUEST = 2
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -36,9 +40,10 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
       questName.setText(quest.name)
       questTownland.setText(quest.townland)
-      questLocation.setText(quest.location)
       questCountry.setText(quest.country)
       questDate.setText(quest.date)
+//      questLatitude.setText(quest.lat.toString())
+//      questLongtitude.setText(quest.lng.toString())
 
       questImage.setImageBitmap(readImageFromPath(this, quest.image))
 
@@ -46,6 +51,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         chooseImage.setText(R.string.button_changeImage)
       }
       edit = true
+    }
+
+    questLocation.setOnClickListener {
+      val location = Location(52.245696, -7.139102, 15f)
+      if (quest.zoom != 0f) {
+        location.lat =  quest.lat
+        location.lng = quest.lng
+        location.zoom = quest.zoom
+      }
+      startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
     }
 
     chooseImage.setOnClickListener {
@@ -66,8 +81,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       IMAGE_REQUEST -> {
         if (data != null) {
           quest.image = data.getData().toString()
-          info(quest.image)
           questImage.setImageBitmap(readImage(this, resultCode, data))
+        }
+      }
+
+      LOCATION_REQUEST -> {
+        if (data != null) {
+          val location = data.extras.getParcelable<Location>("location")
+          quest.lat = location.lat
+          quest.lng = location.lng
+          quest.zoom = location.zoom
         }
       }
 
@@ -84,7 +107,6 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         quest.name = questName.text.toString()
         quest.townland = questTownland.text.toString()
         quest.country = questCountry.text.toString()
-        quest.location = questLocation.text.toString()
         quest.date = questDate.text.toString()
 
         if (edit) {
@@ -94,7 +116,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
           finish()
         } else {
           if (quest.name.isNotEmpty() && quest.townland.isNotEmpty()
-              && quest.country.isNotEmpty() && quest.location.isNotEmpty()) {
+              && quest.country.isNotEmpty()) {
             app.quests.create(quest.copy())
             info("Add Buttom Pressed")
           } else {
