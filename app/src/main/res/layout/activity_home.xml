@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.HomeActivity">
+        tools:context=".activities.HomeActivity" android:background="@color/colorPrimaryDarkMoreTransparent">
 
     <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -24,5 +24,14 @@
         />
 
     </android.support.design.widget.AppBarLayout>
+    <TextView
+            android:text="Welcome to QUEST!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp" android:textSize="30sp"
+            android:fontFamily="monospace" android:textColor="@android:color/white"/>
 
 </android.support.constraint.ConstraintLayout>

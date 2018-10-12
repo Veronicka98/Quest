@@ -33,7 +33,8 @@ class QuestAdaptor constructor(private var quests: List<QuestModel>,
     fun bind(quest: QuestModel,  listener : QuestListener) {
       itemView.questName.text = quest.name
       itemView.questTownland.text = quest.townland
-      itemView.questDate.text = quest.date
+      if (quest.date != "")
+        itemView.questDate.text = "Visited on " + quest.date
       itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, quest.image))
 
       itemView.setOnClickListener { listener.onQuestClick(quest) }
