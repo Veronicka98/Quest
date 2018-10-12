@@ -17,12 +17,16 @@
     <string name="hint_questLocation">Location</string>
     <string name="hint_questLong">Long</string>
     <string name="hint_questLat">Lat</string>
+    <string name="hint_Description">Description</string>
+    <string name="hint_Notes">Notes</string>
+    <string name="hint_visited">VISITED</string>
 
     <!--Prompts-->
     <string name="toast_promptAdd">Please fill out all fields</string>
 
     <!--Images-->
     <string name="select_quest_image">Select Quest Image</string>
+    <string name="hillfortImage">Hillfort Image</string>
 
     <!--Buttons-->
     <string name="button_addImage">Select Image</string>
@@ -31,7 +35,5 @@
     <!--Maps-->
     <string name="title_activity_maps">Map</string>
     <string name="button_location">Set Location</string>
-    <string name="hint_Description">Description</string>
-    <string name="hint_Notes">Notes</string>
 
 </resources>
