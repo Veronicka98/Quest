@@ -18,7 +18,11 @@ data class QuestModel (
     var zoom: Float = 0f,
 
     var date: String = "",
-    var rating: Int = 1
+
+    var description: String = "",
+    var notes: String = "",
+    var visited: Boolean = false,
+    var rating: Float = 1F
 
 ) : Parcelable
 

@@ -30,6 +30,8 @@
 
     <!--Maps-->
     <string name="title_activity_maps">Map</string>
-    <string name="button_location">Add Location</string>
+    <string name="button_location">Set Location</string>
+    <string name="hint_Description">Description</string>
+    <string name="hint_Notes">Notes</string>
 
 </resources>

@@ -13,7 +13,6 @@ import org.jetbrains.anko.toast
 import org.wit.placemark.helpers.showImagePicker
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
-import org.wit.quest.activities.MapsActivity
 import org.wit.quest.models.Location
 import org.wit.quest.models.QuestModel
 import readImage
@@ -45,6 +44,10 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questDate.setText(quest.date)
       questLatitude.setText(quest.lat.toString())
       questLongtitude.setText(quest.lng.toString())
+      questDescription.setText(quest.description)
+      questNotes.setText(quest.notes)
+      questVisited.setChecked(quest.visited)
+      questRating.rating = quest.rating
 
       questImage.setImageBitmap(readImageFromPath(this, quest.image))
 
@@ -108,6 +111,11 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         quest.townland = questTownland.text.toString()
         quest.country = questCountry.text.toString()
         quest.date = questDate.text.toString()
+
+        quest.description = questDescription.text.toString()
+        quest.notes = questNotes.text.toString()
+        quest.rating = questRating.rating
+        quest.visited = questVisited.isChecked
 
         if (edit) {
           app.quests.update(quest.copy())
