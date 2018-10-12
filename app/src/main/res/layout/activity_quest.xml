@@ -64,26 +64,19 @@
                     <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="50dp">
                         <Button
                                 android:id="@+id/chooseImage"
                                 android:layout_width="wrap_content"
-                                android:layout_height="50dp"
+                                android:layout_height="match_parent"
                                 android:text="@string/button_addImage"
                                 android:theme="@style/PrimaryFlatButton"/>
                         <Button
                                 android:id="@+id/questLocation"
                                 android:layout_width="wrap_content"
-                                android:layout_height="50dp"
+                                android:layout_height="match_parent"
                                 android:text="@string/button_location"
                                 android:theme="@style/PrimaryFlatButton"/>
-                        <CheckBox
-                                android:text="@string/hint_visited"
-                                android:layout_width="wrap_content"
-                                android:layout_height="50dp"
-                                android:id="@+id/questVisited"
-                                android:textSize="14sp" android:layout_gravity="center_horizontal"
-                                android:padding="5dp" android:layout_marginStart="15dp"/>
                     </LinearLayout>
 
 
@@ -112,7 +105,7 @@
                                 android:layout_height="wrap_content">
 
                             <EditText
-                                    android:layout_width="158dp"
+                                    android:layout_width="171dp"
                                     android:layout_height="52dp"
                                     android:inputType="text"
                                     android:ems="10"
@@ -148,7 +141,7 @@
                                 android:layout_height="wrap_content">
 
                             <EditText
-                                    android:layout_width="158dp"
+                                    android:layout_width="171dp"
                                     android:layout_height="52dp"
                                     android:inputType="text"
                                     android:ems="10"
@@ -174,21 +167,33 @@
 
                     </LinearLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <LinearLayout
+                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent">
+                        <android.support.design.widget.TextInputLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
 
-                        <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="52dp"
-                                android:inputType="date"
-                                android:ems="10"
-                                android:id="@+id/questDate"
-                                android:hint="@string/hint_questDate"
-                                android:layout_margin="8dp"/>
+                            <EditText
+                                    android:layout_width="171dp"
+                                    android:layout_height="match_parent"
+                                    android:inputType="date"
+                                    android:ems="10"
+                                    android:id="@+id/questDate"
+                                    android:hint="@string/hint_questDate"
+                                    android:layout_margin="8dp"/>
 
-                    </android.support.design.widget.TextInputLayout>
+                        </android.support.design.widget.TextInputLayout>
+                        <CheckBox
+                                android:text="@string/hint_visited"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/questVisited"
+                                android:textSize="14sp" android:layout_gravity="center_horizontal"
+                                android:padding="5dp" android:layout_marginStart="15dp" android:layout_weight="1"/>
 
+                    </LinearLayout>
                     <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
