@@ -60,41 +60,30 @@
                                 android:background="@drawable/hillfort_placeholder"
                                 android:contentDescription="@string/hillfortImage"/>
 
-                        <Button
-                                android:id="@+id/chooseImage"
-                                android:layout_width="match_parent"
-                                android:layout_height="34dp"
-                                android:background="@color/colorPrimaryDarkTransparent"
-                                android:paddingBottom="8dp"
-                                android:paddingTop="8dp"
-                                android:text="@string/button_addImage"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"/>
-
                     </LinearLayout>
-                    <Button
-                            android:id="@+id/questLocation"
-                            android:layout_width="match_parent"
-                            android:layout_height="34dp"
-                            android:background="@color/colorPrimaryDarkTransparent"
-                            android:paddingBottom="8dp"
-                            android:paddingTop="8dp"
-                            android:text="@string/button_location"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" android:layout_marginTop="10dp"
-                            android:layout_marginBottom="16dp"/>
-
                     <LinearLayout
                             android:orientation="horizontal"
-                            android:layout_width="101dp"
-                            android:layout_height="match_parent" android:layout_gravity="center_horizontal">
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        <Button
+                                android:id="@+id/chooseImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:text="@string/button_addImage"
+                                android:theme="@style/PrimaryFlatButton"/>
+                        <Button
+                                android:id="@+id/questLocation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:text="@string/button_location"
+                                android:theme="@style/PrimaryFlatButton"/>
                         <CheckBox
                                 android:text="@string/hint_visited"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
                                 android:id="@+id/questVisited"
                                 android:textSize="14sp" android:layout_gravity="center_horizontal"
-                                android:layout_weight="1"/>
+                                android:padding="5dp" android:layout_marginStart="15dp"/>
                     </LinearLayout>
 
 
@@ -218,7 +207,6 @@
                                 android:layout_margin="8dp"/>
 
                     </android.support.design.widget.TextInputLayout>
-
                     <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
