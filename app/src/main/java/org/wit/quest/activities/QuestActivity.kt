@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -46,15 +47,26 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questLongtitude.setText(quest.lng.toString())
       questDescription.setText(quest.description)
       questNotes.setText(quest.notes)
-      questVisited.setChecked(quest.visited)
+      questVisited.isChecked = quest.visited
       questRating.rating = quest.rating
+
+      if (quest.id == 0L) {
+        imageButtonUp.visibility = View.GONE
+      }
+      if (app.quests.getLastId() == quest.id ) {
+        imageButtonDown.visibility = View.GONE
+      }
 
       questImage.setImageBitmap(readImageFromPath(this, quest.image))
 
       if (quest.image != null) {
         chooseImage.setText(R.string.button_changeImage)
       }
+
       edit = true
+    } else {
+      imageButtonDown.visibility = View.GONE
+      imageButtonUp.visibility = View.GONE
     }
 
     questLocation.setOnClickListener {
@@ -68,6 +80,24 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
     chooseImage.setOnClickListener {
       showImagePicker(this, IMAGE_REQUEST)
+    }
+
+    imageButtonUp.setOnClickListener{
+      var upQuest : QuestModel
+      upQuest = app.quests.findOne(quest.id - 1L)
+      startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
+      overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_in_bottom)
+      setResult(RESULT_CANCELED)
+      finish()
+    }
+
+    imageButtonDown.setOnClickListener{
+      var upQuest : QuestModel
+      upQuest = app.quests.findOne(quest.id + 1L)
+      startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
+      overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_in_top)
+      setResult(RESULT_CANCELED)
+      finish()
     }
 
   }

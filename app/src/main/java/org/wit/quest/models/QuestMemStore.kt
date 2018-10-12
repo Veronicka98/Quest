@@ -17,10 +17,19 @@ class QuestMemStore : QuestStore, AnkoLogger {
     return quests
   }
 
+  override fun findOne(id: Long): QuestModel {
+    var foundQuest: QuestModel? = quests.find { q -> q.id == id }
+    return foundQuest!!
+  }
+
   override fun create(quest: QuestModel) {
     quest.id = getId()
     quests.add(quest)
     logAll()
+  }
+
+  override fun getLastId() : Long {
+    return lastId
   }
 
   override fun update(quest: QuestModel) {
