@@ -53,7 +53,9 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       if (quest.id == 0L) {
         imageButtonUp.visibility = View.GONE
       }
-      if (app.quests.getLastId() == quest.id ) {
+
+
+      if (app.quests.getLastId() == quest.id + 1) {
         imageButtonDown.visibility = View.GONE
       }
 
@@ -123,6 +125,8 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
           val location = data.extras.getParcelable<Location>("location")
           quest.lat = location.lat
           quest.lng = location.lng
+          questLatitude.setText(quest.lat.toString())
+          questLongtitude.setText(quest.lng.toString())
           quest.zoom = location.zoom
         }
       }
