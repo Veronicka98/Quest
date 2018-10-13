@@ -35,6 +35,9 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     setSupportActionBar(toolbarCreate)
 
     app = application as MainApp
+    var upQuest : QuestModel = QuestModel()
+    var downQuest : QuestModel = QuestModel()
+
 
     if (intent.hasExtra("quest_edit")) {
       quest = intent.extras.getParcelable<QuestModel>("quest_edit")
@@ -50,15 +53,6 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questVisited.isChecked = quest.visited
       questRating.rating = quest.rating
 
-      if (quest.id == 0L) {
-        imageButtonUp.visibility = View.GONE
-      }
-
-
-      if (app.quests.getLastId() == quest.id + 1) {
-        imageButtonDown.visibility = View.GONE
-      }
-
       questImage.setImageBitmap(readImageFromPath(this, quest.image))
 
       if (quest.image != null) {
@@ -66,6 +60,21 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       }
 
       edit = true
+
+      var index = app.quests.quests.indexOf(quest)
+
+      if (index + 1 < app.quests.quests.size) {
+        downQuest = app.quests.quests[index + 1]
+      } else {
+        imageButtonDown.visibility = View.GONE
+      }
+
+      if (index > 0) {
+        upQuest = app.quests.quests[index - 1]
+      } else {
+        imageButtonUp.visibility = View.GONE
+      }
+
     } else {
       imageButtonDown.visibility = View.GONE
       imageButtonUp.visibility = View.GONE
@@ -85,18 +94,15 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     }
 
     imageButtonUp.setOnClickListener{
-      var upQuest : QuestModel
-      upQuest = app.quests.findOne(quest.id - 1L)
-      startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
-      overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_in_bottom)
-      setResult(RESULT_CANCELED)
-      finish()
+        startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
+        overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_in_bottom)
+        setResult(RESULT_CANCELED)
+        finish()
+
     }
 
     imageButtonDown.setOnClickListener{
-      var upQuest : QuestModel
-      upQuest = app.quests.findOne(quest.id + 1L)
-      startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
+      startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", downQuest), 201)
       overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_in_top)
       setResult(RESULT_CANCELED)
       finish()
