@@ -112,6 +112,9 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_create, menu)
+    if (!edit) {
+      menu!!.findItem(R.id.item_delete).setVisible(false)
+    }
     return super.onCreateOptionsMenu(menu)
   }
 
@@ -143,6 +146,11 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
       R.id.item_cancel -> {
+        setResult(RESULT_CANCELED)
+        finish()
+      }
+      R.id.item_delete -> {
+        app.quests.delete(quest)
         setResult(RESULT_CANCELED)
         finish()
       }

@@ -15,5 +15,11 @@
             android:title="@string/menu_cancel"
             app:showAsAction="always"/>
 
+    <item
+            android:id="@+id/item_delete"
+            android:icon="@drawable/round_delete_outline_white_18dp"
+            android:title="@string/menu_delete"
+            app:showAsAction="always"/>
+
 
 </menu>

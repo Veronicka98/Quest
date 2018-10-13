@@ -13,19 +13,20 @@ class QuestMemStore : QuestStore, AnkoLogger {
 
   val quests = ArrayList<QuestModel>()
 
-  override fun findAll(): List<QuestModel> {
+  override fun findAll(): ArrayList<QuestModel> {
     return quests
-  }
-
-  override fun findOne(id: Long): QuestModel {
-    var foundQuest: QuestModel? = quests.find { q -> q.id == id }
-    return foundQuest!!
   }
 
   override fun create(quest: QuestModel) {
     quest.id = getId()
     quests.add(quest)
     logAll()
+  }
+
+  override fun delete(quest: QuestModel) {
+    if (quest != null) {
+      quests.remove(quest)
+    }
   }
 
   override fun getLastId() : Long {
