@@ -3,6 +3,9 @@ package org.wit.quest.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
@@ -16,7 +19,7 @@ import org.wit.quest.adaptors.QuestListener
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.QuestModel
 
-class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener {
+class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationView.OnNavigationItemSelectedListener {
 
   lateinit var app: MainApp
 
@@ -31,6 +34,13 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener {
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     loadQuests()
+
+    val toggle = ActionBarDrawerToggle(
+        this, drawer_layout, toolbarList, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+    drawer_layout.addDrawerListener(toggle)
+    toggle.syncState()
+
+    nav_view.setNavigationItemSelectedListener(this)
   }
 
   private fun loadQuests() {
@@ -51,17 +61,25 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener {
     startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", quest), 201)
   }
 
-  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    menuInflater.inflate(R.menu.menu_main, menu)
-    return super.onCreateOptionsMenu(menu)
+  override fun onBackPressed() {
+    if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+      drawer_layout.closeDrawer(GravityCompat.START)
+    } else {
+      super.onBackPressed()
+    }
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-    when (item?.itemId) {
+  override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    // Handle navigation view item clicks here.
+    when (item.itemId) {
       R.id.item_home -> startActivityForResult<HomeActivity>(200)
       R.id.item_add -> startActivityForResult<QuestActivity>(200)
       R.id.item_setting -> startActivityForResult<SettingsActivity>(200)
     }
-    return super.onOptionsItemSelected(item)
+
+
+    finish()
+    drawer_layout.closeDrawer(GravityCompat.START)
+    return true
   }
 }
