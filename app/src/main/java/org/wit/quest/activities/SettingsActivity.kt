@@ -47,9 +47,7 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
       R.id.item_add -> startActivityForResult<QuestActivity>(200)
       R.id.item_list -> startActivityForResult<ListActivity>(200)
     }
-
-
-    finish()
+    
     drawer_layout.closeDrawer(GravityCompat.START)
     return true
   }

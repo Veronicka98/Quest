@@ -48,7 +48,6 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
       R.id.item_setting -> startActivityForResult<SettingsActivity>(200)
     }
 
-    finish()
     drawer_layout.closeDrawer(GravityCompat.START)
     return true
   }
