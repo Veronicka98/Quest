@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/item_home"
+                android:icon="@drawable/round_place_white_18dp"
+                android:title="@string/menu_home"/>
+
+
+        <item
+                android:id="@+id/item_add"
+                android:icon="@drawable/round_add_location_white_18dp"
+                android:title="@string/menu_add"/>
+
+
+        <item
+                android:id="@+id/item_list"
+                android:icon="@drawable/round_not_listed_location_white_18dp"
+                android:title="@string/menu_list"/>
+
+
+        <item
+                android:id="@+id/item_setting"
+                android:icon="@drawable/round_person_pin_circle_white_18dp"
+                android:title="@string/menu_settings"/>
+    </group>
+
+
+</menu>
