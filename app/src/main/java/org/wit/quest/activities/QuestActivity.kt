@@ -20,6 +20,7 @@ import org.wit.quest.models.QuestModel
 import readImage
 import readImageFromPath
 
+
 class QuestActivity : AppCompatActivity(), AnkoLogger {
 
   lateinit var app : MainApp
@@ -57,6 +58,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questRating.rating = quest.rating
 
       questImage.setImageBitmap(readImageFromPath(this, quest.image))
+
+      if (quest.image1 == "") questImage1.visibility = View.GONE
+      else questImage1.setImageBitmap(readImageFromPath(this, quest.image1))
+
+      if (quest.image2 == "") questImage2.visibility = View.GONE
+      else questImage2.setImageBitmap(readImageFromPath(this, quest.image2))
+
+      if (quest.image3 == "") questImage3.visibility = View.GONE
+      else questImage3.setImageBitmap(readImageFromPath(this, quest.image3))
+
 
       if (quest.image != null) {
         chooseImage.setText(R.string.button_changeImage)
@@ -126,9 +137,42 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     when (requestCode) {
 
       IMAGE_REQUEST -> {
+        info("Image data: " + data)
         if (data != null) {
-          quest.image = data.getData().toString()
-          questImage.setImageBitmap(readImage(this, resultCode, data))
+
+          if (data.data != null) {
+            quest.image = data.getData().toString()
+            questImage.setImageBitmap(readImage(this, resultCode, data.getData()))
+          } else {
+            info("Image data: data.clipdata")
+            var i = data.clipData.itemCount
+
+            if(i > 0) {
+              info("Image data: " + i)
+              for (i in 0..i - 1) {
+                info("Image data: " + data.clipData.getItemAt(i).uri.toString())
+                if (i == 0) {
+                  quest.image = data.clipData.getItemAt(i).uri.toString()
+                  questImage.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
+                }
+                if (i == 1) {
+                  quest.image1 = data.clipData.getItemAt(i).uri.toString()
+                  questImage1.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
+                  questImage1.visibility = View.VISIBLE
+                }
+                if (i == 2) {
+                  quest.image2 = data.clipData.getItemAt(i).uri.toString()
+                  questImage2.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
+                  questImage2.visibility = View.VISIBLE
+                }
+                if (i == 3) {
+                  quest.image3 = data.clipData.getItemAt(i).uri.toString()
+                  questImage3.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
+                  questImage3.visibility = View.VISIBLE
+                }
+              }
+            }
+          }
         }
       }
 

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_quest.*
 import kotlinx.android.synthetic.main.card_quest.view.*
 import org.wit.quest.R
 import org.wit.quest.models.QuestModel
@@ -36,6 +37,15 @@ class QuestAdaptor constructor(private var quests: List<QuestModel>,
       if (quest.date != "")
         itemView.questDate.text = "Visited on " + quest.date
       itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, quest.image))
+
+      if (quest.image1 == "") itemView.imageIcon1.visibility = View.GONE
+      else itemView.imageIcon1.setImageBitmap(readImageFromPath(itemView.context, quest.image1))
+
+      if (quest.image2 == "") itemView.imageIcon2.visibility = View.GONE
+      else itemView.imageIcon2.setImageBitmap(readImageFromPath(itemView.context, quest.image2))
+
+      if (quest.image3 == "") itemView.imageIcon3.visibility = View.GONE
+      else itemView.imageIcon3.setImageBitmap(readImageFromPath(itemView.context, quest.image3))
 
       itemView.setOnClickListener { listener.onQuestClick(quest) }
     }

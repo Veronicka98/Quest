@@ -66,13 +66,39 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" android:orientation="vertical">
 
-                            <ImageView
-                                    android:id="@+id/questImage"
+                            <LinearLayout
+                                    android:orientation="horizontal"
                                     android:layout_width="match_parent"
-                                    android:layout_height="160dp"
-                                    android:scaleType="centerCrop"
-                                    android:background="@drawable/hillfort_placeholder"
-                                    android:contentDescription="@string/hillfortImage"/>
+                                    android:layout_height="match_parent">
+                                <ImageView
+                                        android:id="@+id/questImage3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="160dp"
+                                        android:scaleType="centerCrop"
+                                        android:background="@drawable/hillfort_placeholder"
+                                        android:contentDescription="@string/hillfortImage" android:layout_weight="1"/>
+                                <ImageView
+                                        android:id="@+id/questImage2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="160dp"
+                                        android:scaleType="centerCrop"
+                                        android:background="@drawable/hillfort_placeholder"
+                                        android:contentDescription="@string/hillfortImage" android:layout_weight="1"/>
+                                <ImageView
+                                        android:id="@+id/questImage1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="160dp"
+                                        android:scaleType="centerCrop"
+                                        android:background="@drawable/hillfort_placeholder"
+                                        android:contentDescription="@string/hillfortImage" android:layout_weight="1"/>
+                                <ImageView
+                                        android:id="@+id/questImage"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="160dp"
+                                        android:scaleType="centerCrop"
+                                        android:background="@drawable/hillfort_placeholder"
+                                        android:contentDescription="@string/hillfortImage" android:layout_weight="1"/>
+                            </LinearLayout>
 
                         </LinearLayout>
                         <LinearLayout
