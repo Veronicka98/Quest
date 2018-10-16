@@ -92,6 +92,9 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     } else {
       imageButtonDown.visibility = View.GONE
       imageButtonUp.visibility = View.GONE
+      questImage1.visibility = View.GONE
+      questImage2.visibility = View.GONE
+      questImage3.visibility = View.GONE
     }
 
     questLocation.setOnClickListener {
@@ -138,8 +141,13 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
       IMAGE_REQUEST -> {
         info("Image data: " + data)
+        questImage1.visibility = View.GONE
+        quest.image1 = ""
+        questImage2.visibility = View.GONE
+        quest.image2 = ""
+        questImage3.visibility = View.GONE
+        quest.image3 = ""
         if (data != null) {
-
           if (data.data != null) {
             quest.image = data.getData().toString()
             questImage.setImageBitmap(readImage(this, resultCode, data.getData()))
