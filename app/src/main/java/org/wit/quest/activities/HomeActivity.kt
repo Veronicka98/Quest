@@ -44,6 +44,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
     // Handle navigation view item clicks here.
     when (item.itemId) {
       R.id.item_add -> startActivityForResult<QuestActivity>(200)
+      R.id.item_login -> startActivityForResult<LoginActivity>(200)
       R.id.item_list -> startActivityForResult<ListActivity>(200)
       R.id.item_setting -> startActivityForResult<SettingsActivity>(200)
     }
