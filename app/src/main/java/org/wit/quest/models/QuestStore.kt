@@ -5,5 +5,6 @@ interface QuestStore {
   fun create(quest: QuestModel)
   fun delete(quest: QuestModel)
   fun update(quest: QuestModel)
-  fun getLastId(): Long
+  fun indexOf(quest: QuestModel): Int
+  fun size(): Int
 }

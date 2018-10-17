@@ -10,6 +10,13 @@ internal fun getId(): Long {
 }
 
 class QuestMemStore : QuestStore, AnkoLogger {
+  override fun size(): Int {
+    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  }
+
+  override fun indexOf(quest: QuestModel): Int {
+    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  }
 
   val quests = ArrayList<QuestModel>()
 
@@ -27,10 +34,6 @@ class QuestMemStore : QuestStore, AnkoLogger {
     if (quest != null) {
       quests.remove(quest)
     }
-  }
-
-  override fun getLastId() : Long {
-    return lastId
   }
 
   override fun update(quest: QuestModel) {

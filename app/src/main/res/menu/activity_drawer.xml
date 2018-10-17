@@ -27,11 +27,6 @@
                 android:icon="@drawable/round_person_pin_circle_white_18dp"
                 android:title="@string/menu_settings"/>
 
-        <item
-                android:id="@+id/item_login"
-                android:icon="@drawable/round_map_white_18dp"
-                android:title="@string/menu_login"/>
-
     </group>
 
 

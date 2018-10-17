@@ -75,16 +75,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
       edit = true
 
-      var index = app.quests.quests.indexOf(quest)
+      var index = app.quests.indexOf(quest)
 
-      if (index + 1 < app.quests.quests.size) {
-        downQuest = app.quests.quests[index + 1]
+      if (index + 1 < app.quests.size()) {
+        downQuest = app.quests.findAll()[index + 1]
       } else {
         imageButtonDown.visibility = View.GONE
       }
 
       if (index > 0) {
-        upQuest = app.quests.quests[index - 1]
+        upQuest = app.quests.findAll()[index - 1]
       } else {
         imageButtonUp.visibility = View.GONE
       }
