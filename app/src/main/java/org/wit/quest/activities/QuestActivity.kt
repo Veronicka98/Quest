@@ -99,8 +99,8 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
     questLocation.setOnClickListener {
       if (quest.zoom != 0f) {
-        location.lat =  quest.lat
-        location.lng = quest.lng
+        location.lat =  questLatitude.text.toString().toDouble()
+        location.lng = questLongtitude.text.toString().toDouble()
         location.zoom = quest.zoom
       }
       startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)

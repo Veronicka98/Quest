@@ -111,12 +111,6 @@
                                     android:layout_height="match_parent"
                                     android:text="@string/button_addImage"
                                     android:theme="@style/PrimaryFlatButton"/>
-                            <Button
-                                    android:id="@+id/questLocation"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/button_location"
-                                    android:theme="@style/PrimaryFlatButton"/>
                         </LinearLayout>
 
 
@@ -166,42 +160,6 @@
                                         android:ems="10"
                                         android:hint="@string/hint_questCountry" android:layout_weight="1"
                                         android:id="@+id/questCountry" android:layout_margin="8dp"/>
-
-                            </android.support.design.widget.TextInputLayout>
-
-                        </LinearLayout>
-                        <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-
-                            <android.support.design.widget.TextInputLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-
-                                <EditText
-                                        android:layout_width="171dp"
-                                        android:layout_height="52dp"
-                                        android:inputType="text"
-                                        android:ems="10"
-                                        android:hint="@string/hint_questLong" android:layout_weight="1"
-                                        android:id="@+id/questLongtitude" android:layout_margin="8dp"/>
-
-                            </android.support.design.widget.TextInputLayout>
-
-
-                            <android.support.design.widget.TextInputLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-
-                                <EditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="52dp"
-                                        android:inputType="text"
-                                        android:ems="10"
-                                        android:hint="@string/hint_questLat" android:layout_weight="1"
-                                        android:id="@+id/questLatitude" android:layout_margin="8dp"/>
 
                             </android.support.design.widget.TextInputLayout>
 
@@ -271,6 +229,51 @@
 
                         </android.support.design.widget.TextInputLayout>
 
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                            <android.support.design.widget.TextInputLayout
+                                    android:layout_width="123dp"
+                                    android:layout_height="wrap_content">
+
+                                <EditText
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="text"
+                                        android:ems="10"
+                                        android:hint="@string/hint_questLong" android:layout_weight="1"
+                                        android:id="@+id/questLongtitude" android:layout_margin="8dp"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+
+                            <android.support.design.widget.TextInputLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                <EditText
+                                        android:layout_width="111dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="text"
+                                        android:ems="10"
+                                        android:hint="@string/hint_questLat" android:layout_weight="1"
+                                        android:id="@+id/questLatitude" android:layout_margin="8dp"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <Button
+                                    android:id="@+id/questLocation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/button_location"
+                                    android:theme="@style/PrimaryFlatButton"
+                                    android:contentDescription="@string/hint_questLocation"
+                                    android:layout_gravity="center"/>
+
+                        </LinearLayout>
 
                         <LinearLayout
                                 android:orientation="horizontal"

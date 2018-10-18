@@ -18,7 +18,7 @@ data class QuestModel (
 
     var lat: Double = 0.0,
     var lng: Double = 0.0,
-    var zoom: Float = 0f,
+    var zoom: Float = 5f,
 
     var date: String = "",
 
