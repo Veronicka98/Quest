@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.wit.quest.helpers.*
 import java.util.*
 
@@ -40,11 +41,41 @@ class QuestJSONStore : QuestStore, AnkoLogger {
 
 
   override fun update(quest: QuestModel) {
-    // todo
+    var foundQuest: QuestModel? = quests.find { q -> q.id == quest.id }
+    if (foundQuest != null) {
+      foundQuest.name = quest.name
+      foundQuest.townland = quest.townland
+      foundQuest.country = quest.country
+
+      foundQuest.image = quest.image
+      foundQuest.image1 = quest.image1
+      foundQuest.image2 = quest.image2
+      foundQuest.image3 = quest.image3
+
+      foundQuest.date = quest.date
+
+      foundQuest.description = quest.description
+      foundQuest.notes = quest.notes
+      foundQuest.rating = quest.rating
+      foundQuest.visited = quest.visited
+
+      foundQuest.lat = quest.lat
+      foundQuest.lng = quest.lng
+      foundQuest.zoom = quest.zoom
+
+      logAll()
+      serialize()
+    }
   }
 
   override fun delete(quest: QuestModel) {
-    // todo
+    if (quest != null) {
+      quests.remove(quest)
+    }
+  }
+
+  fun logAll() {
+    quests.forEach { info("${it}") }
   }
 
   override fun size(): Int {
