@@ -39,6 +39,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     setSupportActionBar(toolbarCreate)
 
     app = application as MainApp
+
     var upQuest : QuestModel = QuestModel()
     var downQuest : QuestModel = QuestModel()
 
