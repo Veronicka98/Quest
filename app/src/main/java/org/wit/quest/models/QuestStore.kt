@@ -7,4 +7,5 @@ interface QuestStore {
   fun update(quest: QuestModel)
   fun indexOf(quest: QuestModel): Int
   fun size(): Int
+  fun visited(): Int
 }

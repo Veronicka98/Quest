@@ -12,6 +12,7 @@ import java.util.*
 val USER_JSON_FILE = "users.json"
 val gsonUserBuilder = GsonBuilder().setPrettyPrinting().create()
 val listUserType = object : TypeToken<java.util.ArrayList<UserModel>>() {}.type
+var loggedIn = UserModel()
 
 fun generateRandomUserId(): Long {
   return Random().nextLong()
@@ -45,6 +46,7 @@ class UserJSONStore : UserStore, AnkoLogger {
     if (foundUser != null) {
       foundUser.email = user.email
       foundUser.password = user.password
+      foundUser.profileImage = user.profileImage
 
       logAll()
       serialize()
@@ -57,10 +59,18 @@ class UserJSONStore : UserStore, AnkoLogger {
     }
   }
 
+  override fun getLoggedIn(): UserModel {
+    return loggedIn
+  }
+
+  override fun logOut() {
+    loggedIn = UserModel()
+  }
 
   override fun login(user: UserModel): Boolean {
     var foundUser: UserModel? = users.find { u -> u.email == user.email && u.password == user.password }
     if (foundUser != null) {
+      loggedIn = foundUser
       return false // login success
     }
     return true // login failed

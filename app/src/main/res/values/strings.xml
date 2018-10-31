@@ -64,5 +64,14 @@
     <string name="title_activity_fullscreen">Fullscreen Activity</string>
     <string name="menu_login">Login</string>
     <string name="action_sign_up">Sign Up</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="button_user">Select Profile Image</string>
+    <string name="hint_profile">Logged In User</string>
+    <string name="hint_stats">Statistics</string>
+    <string name="hint_no_quests">Number of Quests</string>
+    <string name="hint_no_visited">Quests Visited</string>
+    <string name="profile_description">Profile Description</string>
+    <string name="button_delete_user">Delete Profile</string>
 
 </resources>

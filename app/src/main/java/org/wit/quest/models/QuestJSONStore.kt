@@ -39,6 +39,13 @@ class QuestJSONStore : QuestStore, AnkoLogger {
     serialize()
   }
 
+  override fun visited(): Int {
+    var no_visited = 0
+    quests.forEach{
+      if (it.visited) no_visited++
+    }
+    return no_visited
+  }
 
   override fun update(quest: QuestModel) {
     var foundQuest: QuestModel? = quests.find { q -> q.id == quest.id }

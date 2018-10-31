@@ -9,4 +9,6 @@ interface UserStore {
   fun size(): Int
   fun login(user: UserModel): Boolean
   fun signup(user: UserModel): Boolean
+  fun getLoggedIn() : UserModel
+  fun logOut()
 }

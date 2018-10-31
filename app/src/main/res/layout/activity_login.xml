@@ -9,7 +9,7 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
-              tools:context=".activities.LoginActivity" android:background="@color/colorPrimaryDarkTransparent"
+              tools:context=".activities.LoginActivity" android:background="@color/colorPrimaryDark"
               android:descendantFocusability="beforeDescendants"
               android:focusableInTouchMode="true">
 
@@ -20,7 +20,7 @@
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             app:srcCompat="@mipmap/quest_icon"
             android:contentDescription="@string/nav_header_desc"
-            android:id="@+id/imageView" android:layout_margin="10dp"/>
+            android:id="@+id/imageView" android:layout_marginBottom="50dp"/>
 
     <TextView
             android:layout_width="match_parent"
@@ -40,10 +40,12 @@
             android:textSize="18sp"
             android:id="@+id/description" android:layout_gravity="center" android:textAlignment="center"
             android:contentDescription="@string/app_description" android:fontFamily="@font/advent_pro_semibold"/>
+
     <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_gravity="center"
-    >
+            android:backgroundTint="@color/colorPrimaryDarkTransparent" app:cardElevation="0dp">
+
         <ScrollView
                 android:id="@+id/login_form"
                 android:layout_width="match_parent"
@@ -57,7 +59,8 @@
 
                 <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:layout_margin="5dp">
+                        android:layout_height="wrap_content" android:layout_margin="5dp"
+                        android:textColorHint="@color/colorPrimary" app:boxStrokeColor="@color/colorPrimary">
 
                     <AutoCompleteTextView
                             android:id="@+id/useremail"
@@ -68,13 +71,15 @@
                             android:maxLines="1"
                             android:singleLine="true" android:layout_marginTop="25dp"
                             android:layout_marginRight="10dp" android:layout_marginLeft="10dp"
-                    />
+                            android:textColorHint="@color/colorPrimary"
+                            android:textColor="@color/colorPrimary"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:layout_margin="5dp">
+                        android:layout_height="wrap_content" android:layout_margin="5dp"
+                        app:boxStrokeColor="@color/colorPrimary" android:textColorHint="@color/colorPrimary">
 
                     <EditText
                             android:id="@+id/userpassword"
@@ -86,7 +91,8 @@
                             android:imeOptions="actionUnspecified"
                             android:inputType="textPassword"
                             android:maxLines="1"
-                            android:singleLine="true" android:layout_margin="10dp"/>
+                            android:singleLine="true" android:layout_margin="10dp"
+                            android:textColorHint="@color/colorPrimary" android:textColor="@color/colorPrimary"/>
 
                 </android.support.design.widget.TextInputLayout>
 
