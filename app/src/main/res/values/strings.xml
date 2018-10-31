@@ -73,5 +73,6 @@
     <string name="hint_no_visited">Quests Visited</string>
     <string name="profile_description">Profile Description</string>
     <string name="button_delete_user">Delete Profile</string>
+    <string name="button_logout">Logout</string>
 
 </resources>

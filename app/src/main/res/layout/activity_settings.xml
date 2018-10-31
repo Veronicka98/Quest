@@ -82,6 +82,13 @@
                                     android:text="@string/button_delete_user"
                                     android:theme="@style/PrimaryFlatButton" android:layout_weight="1"/>
 
+                            <Button
+                                    android:id="@+id/logout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/button_logout"
+                                    android:theme="@style/PrimaryFlatButton" android:layout_weight="1"/>
+
                         </LinearLayout>
 
 

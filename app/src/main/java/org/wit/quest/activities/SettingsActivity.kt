@@ -53,8 +53,14 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
 
     deleteProfile.setOnClickListener {
       app.users.delete(user)
-
       startActivity(intentFor<LoginActivity>())
+      finish()
+    }
+
+    logout.setOnClickListener {
+      app.users.logOut()
+      startActivity(intentFor<LoginActivity>())
+      finish()
     }
 
     nav_view.setNavigationItemSelectedListener(this)
