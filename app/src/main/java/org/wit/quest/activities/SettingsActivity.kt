@@ -16,8 +16,7 @@ import org.wit.placemark.helpers.showImagePicker
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.UserModel
-import readImage
-import readImageFromPath
+import org.wit.placemark.helpers.*
 
 class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,8 +41,7 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
     no_quests.text = "Number of quests: " + app.users.sizeQuests()
     quests_visited.text = "Quests Visited: " + app.users.visited()
 
-    val toggle = ActionBarDrawerToggle(
-        this, drawer_layout, toolbarSettings, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+    val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbarSettings, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
 
@@ -71,7 +69,6 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
     when (requestCode) {
 
       1 -> {
-        info("Image data: " + data)
         if (data != null) {
           if (data.data != null) {
             user.profileImage = data.getData().toString()
@@ -92,7 +89,6 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
-    // Handle navigation view item clicks here.
     when (item.itemId) {
       R.id.item_home -> startActivityForResult<HomeActivity>(200)
       R.id.item_add -> startActivityForResult<QuestActivity>(200)

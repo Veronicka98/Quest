@@ -6,8 +6,6 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import org.wit.quest.R
 
-import kotlinx.android.synthetic.main.activity_splash.*
-
 class SplashActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {

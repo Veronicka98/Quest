@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_list.*
 import org.jetbrains.anko.AnkoLogger
@@ -35,8 +34,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
     recyclerView.layoutManager = layoutManager
     loadQuests()
 
-    val toggle = ActionBarDrawerToggle(
-        this, drawer_layout, toolbarList, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+    val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbarList, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
 
@@ -44,7 +42,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
   }
 
   private fun loadQuests() {
-    showQuests ( app.users.findAllQuests())
+    showQuests(app.users.findAllQuests())
   }
 
   fun showQuests (quests: List<QuestModel>) {
@@ -70,7 +68,6 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
-    // Handle navigation view item clicks here.
     when (item.itemId) {
       R.id.item_home -> startActivityForResult<HomeActivity>(200)
       R.id.item_add -> startActivityForResult<QuestActivity>(200)

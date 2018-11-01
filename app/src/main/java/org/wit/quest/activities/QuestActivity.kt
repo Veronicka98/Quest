@@ -3,9 +3,7 @@ package org.wit.quest.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.media.MediaBrowserCompat
 import android.view.*
-import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -16,9 +14,7 @@ import org.wit.quest.R
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.Location
 import org.wit.quest.models.QuestModel
-import readImage
-import readImageFromPath
-
+import org.wit.placemark.helpers.*
 
 class QuestActivity : AppCompatActivity(), AnkoLogger {
 
@@ -43,8 +39,8 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     var upQuest : QuestModel = QuestModel()
     var downQuest : QuestModel = QuestModel()
 
-
     if (intent.hasExtra("quest_edit")) {
+      edit = true
       quest = intent.extras.getParcelable<QuestModel>("quest_edit")
 
       questName.setText(quest.name)
@@ -69,12 +65,9 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       if (quest.image3 == "") questImage3.visibility = View.GONE
       else questImage3.setImageBitmap(readImageFromPath(this, quest.image3))
 
-
       if (quest.image != null) {
         chooseImage.setText(R.string.button_changeImage)
       }
-
-      edit = true
 
       var index = app.users.indexOfQuests(quest)
 
@@ -158,9 +151,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_create, menu)
-    if (!edit) {
-      menu!!.findItem(R.id.item_delete).setVisible(false)
-    }
+    if (!edit) menu!!.findItem(R.id.item_delete).setVisible(false)
     return super.onCreateOptionsMenu(menu)
   }
 

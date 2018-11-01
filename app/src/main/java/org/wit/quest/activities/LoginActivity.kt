@@ -20,9 +20,8 @@ class LoginActivity : AppCompatActivity() {
 
     app = application as MainApp
 
-    signin.setOnClickListener { login() }
-
-    signup.setOnClickListener { singup() }
+    signin.setOnClickListener {login()}
+    signup.setOnClickListener {singup()}
   }
 
   fun singup() {
@@ -63,17 +62,10 @@ class LoginActivity : AppCompatActivity() {
       return
     }
 
-    android.os.Handler().postDelayed(
-        {
-          // On complete call either onLoginSuccess or onLoginFailed
-          onLoginSuccess()
-          // onLoginFailed();
-        }, 1000)
+    android.os.Handler().postDelayed({onLoginSuccess()}, 1000)
   }
 
-
   override fun onBackPressed() {
-    // Disable going back to the MainActivity
     moveTaskToBack(true)
   }
 
@@ -86,7 +78,6 @@ class LoginActivity : AppCompatActivity() {
   fun onLoginFailed() {
     Toast.makeText(baseContext, "Login failed", Toast.LENGTH_LONG).show()
   }
-
 
   fun onSignUpFailed() {
     Toast.makeText(baseContext, "Sign Up failed", Toast.LENGTH_LONG).show()

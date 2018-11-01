@@ -12,7 +12,6 @@ import org.jetbrains.anko.info
 import org.jetbrains.anko.startActivityForResult
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
-import org.wit.quest.models.QuestModel
 
 class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigationItemSelectedListener{
 
@@ -28,8 +27,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
 
     info(app.users.findAll())
 
-val toggle = ActionBarDrawerToggle(
-        this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+    val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
 
@@ -45,7 +43,6 @@ val toggle = ActionBarDrawerToggle(
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
-    // Handle navigation view item clicks here.
     when (item.itemId) {
       R.id.item_add -> startActivityForResult<QuestActivity>(200)
       R.id.item_list -> startActivityForResult<ListActivity>(200)
