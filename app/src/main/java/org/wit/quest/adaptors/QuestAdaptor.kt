@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import kotlinx.android.synthetic.main.card_quest.view.*
 import org.wit.quest.R
 import org.wit.quest.models.QuestModel
@@ -29,21 +30,28 @@ class QuestAdaptor constructor(private var quests: List<QuestModel>,
 
   class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+
+    var imgs : ArrayList<ImageView> = ArrayList()
+
     fun bind(quest: QuestModel,  listener : QuestListener) {
+
+      imgs.add(itemView.imageIcon)
+      imgs.add(itemView.imageIcon1)
+      imgs.add(itemView.imageIcon2)
+      imgs.add(itemView.imageIcon3)
+      itemView.imageIcon1.visibility = View.GONE
+      itemView.imageIcon2.visibility = View.GONE
+      itemView.imageIcon3.visibility = View.GONE
+
       itemView.questName.text = quest.name
       itemView.questTownland.text = quest.townland
       if (quest.date != "")
         itemView.questDate.text = "Visited on " + quest.date
-      itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, quest.image))
 
-      if (quest.image1 == "") itemView.imageIcon1.visibility = View.GONE
-      else itemView.imageIcon1.setImageBitmap(readImageFromPath(itemView.context, quest.image1))
-
-      if (quest.image2 == "") itemView.imageIcon2.visibility = View.GONE
-      else itemView.imageIcon2.setImageBitmap(readImageFromPath(itemView.context, quest.image2))
-
-      if (quest.image3 == "") itemView.imageIcon3.visibility = View.GONE
-      else itemView.imageIcon3.setImageBitmap(readImageFromPath(itemView.context, quest.image3))
+      for(i in quest.images) {
+        imgs[quest.images.indexOf(i)].visibility = View.VISIBLE
+        imgs[quest.images.indexOf(i)].setImageBitmap(readImageFromPath(itemView.context, i))
+      }
 
       itemView.setOnClickListener { listener.onQuestClick(quest) }
     }

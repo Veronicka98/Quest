@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -25,6 +26,8 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
   val IMAGE_REQUEST = 1
   val LOCATION_REQUEST = 2
   val FULLSCREEN = 3
+  var imgs : ArrayList<ImageView> = ArrayList()
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -38,6 +41,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
     var upQuest : QuestModel = QuestModel()
     var downQuest : QuestModel = QuestModel()
+    imgs.add(questImage)
+    imgs.add(questImage1)
+    imgs.add(questImage2)
+    imgs.add(questImage3)
+
+    questImage1.visibility = View.GONE
+    questImage2.visibility = View.GONE
+    questImage3.visibility = View.GONE
+    imageButtonDown.visibility = View.GONE
+    imageButtonUp.visibility = View.GONE
 
     if (intent.hasExtra("quest_edit")) {
       edit = true
@@ -54,18 +67,12 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questVisited.isChecked = quest.visited
       questRating.rating = quest.rating
 
-      questImage.setImageBitmap(readImageFromPath(this, quest.image))
+      for(i in quest.images) {
+        imgs[quest.images.indexOf(i)].visibility = View.VISIBLE
+        imgs[quest.images.indexOf(i)].setImageBitmap(readImageFromPath(this, i))
+      }
 
-      if (quest.image1 == "") questImage1.visibility = View.GONE
-      else questImage1.setImageBitmap(readImageFromPath(this, quest.image1))
-
-      if (quest.image2 == "") questImage2.visibility = View.GONE
-      else questImage2.setImageBitmap(readImageFromPath(this, quest.image2))
-
-      if (quest.image3 == "") questImage3.visibility = View.GONE
-      else questImage3.setImageBitmap(readImageFromPath(this, quest.image3))
-
-      if (quest.image != null) {
+      if (quest.images.size != 0) {
         chooseImage.setText(R.string.button_changeImage)
       }
 
@@ -73,22 +80,14 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
       if (index + 1 < app.users.sizeQuests()) {
         downQuest = app.users.findAllQuests()[index + 1]
-      } else {
-        imageButtonDown.visibility = View.GONE
+        imageButtonDown.visibility = View.VISIBLE
       }
 
       if (index > 0) {
         upQuest = app.users.findAllQuests()[index - 1]
-      } else {
-        imageButtonUp.visibility = View.GONE
+        imageButtonUp.visibility = View.VISIBLE
       }
 
-    } else {
-      imageButtonDown.visibility = View.GONE
-      imageButtonUp.visibility = View.GONE
-      questImage1.visibility = View.GONE
-      questImage2.visibility = View.GONE
-      questImage3.visibility = View.GONE
     }
 
     questLocation.setOnClickListener {
@@ -104,38 +103,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       showImagePicker(this, IMAGE_REQUEST)
     }
 
-    questImage.setOnClickListener(object : View.OnClickListener {
-      override fun onClick(v: View?) {
-        startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", quest.image), FULLSCREEN)
+    for(i in quest.images) {
+      imgs[quest.images.indexOf(i)].setOnClickListener{
+        startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", i), FULLSCREEN)
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
       }
-    })
-
-    questImage1.setOnClickListener(object : View.OnClickListener {
-      override fun onClick(v: View?) {
-        startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", quest.image1), FULLSCREEN)
-        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-      }
-    })
-
-    questImage2.setOnClickListener(object : View.OnClickListener {
-      override fun onClick(v: View?) {
-        startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", quest.image2), FULLSCREEN)
-        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-      }
-    })
-
-    questImage3.setOnClickListener(object : View.OnClickListener {
-      override fun onClick(v: View?) {
-        startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", quest.image3), FULLSCREEN)
-        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-      }
-    })
+    }
 
     imageButtonUp.setOnClickListener{
         startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
         overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_in_bottom)
-        setResult(RESULT_CANCELED)
         finish()
 
     }
@@ -143,7 +120,6 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     imageButtonDown.setOnClickListener{
       startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", downQuest), 201)
       overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_in_top)
-      setResult(RESULT_CANCELED)
       finish()
     }
 
@@ -160,44 +136,27 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     when (requestCode) {
 
       IMAGE_REQUEST -> {
-        info("Image data: " + data)
+
+        quest.images.clear()
         questImage1.visibility = View.GONE
-        quest.image1 = ""
         questImage2.visibility = View.GONE
-        quest.image2 = ""
         questImage3.visibility = View.GONE
-        quest.image3 = ""
+
         if (data != null) {
+
           if (data.data != null) {
-            quest.image = data.getData().toString()
+            quest.images.add(data.getData().toString())
             questImage.setImageBitmap(readImage(this, resultCode, data.getData()))
           } else {
-            info("Image data: data.clipdata")
+
             var i = data.clipData.itemCount
 
             if(i > 0) {
-              info("Image data: " + i)
               for (i in 0..i - 1) {
-                info("Image data: " + data.clipData.getItemAt(i).uri.toString())
-                if (i == 0) {
-                  quest.image = data.clipData.getItemAt(i).uri.toString()
-                  questImage.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
-                }
-                if (i == 1) {
-                  quest.image1 = data.clipData.getItemAt(i).uri.toString()
-                  questImage1.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
-                  questImage1.visibility = View.VISIBLE
-                }
-                if (i == 2) {
-                  quest.image2 = data.clipData.getItemAt(i).uri.toString()
-                  questImage2.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
-                  questImage2.visibility = View.VISIBLE
-                }
-                if (i == 3) {
-                  quest.image3 = data.clipData.getItemAt(i).uri.toString()
-                  questImage3.setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
-                  questImage3.visibility = View.VISIBLE
-                }
+                imgs[i].visibility = View.VISIBLE
+                quest.images.add(data.clipData.getItemAt(i).uri.toString())
+                imgs[i].setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
+
               }
             }
           }

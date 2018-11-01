@@ -120,10 +120,7 @@ class UserJSONStore : UserStore, AnkoLogger {
       foundQuest.townland = quest.townland
       foundQuest.country = quest.country
 
-      foundQuest.image = quest.image
-      foundQuest.image1 = quest.image1
-      foundQuest.image2 = quest.image2
-      foundQuest.image3 = quest.image3
+      foundQuest.images = quest.images
 
       foundQuest.date = quest.date
 
