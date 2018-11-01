@@ -9,6 +9,7 @@ data class UserModel (
 
     var email: String = "",
     var password: String = "",
-    var profileImage: String=""
+    var profileImage: String="",
+    var quests : ArrayList<QuestModel> = ArrayList()
 
 ) : Parcelable

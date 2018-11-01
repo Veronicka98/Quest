@@ -8,9 +8,11 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_home.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.jetbrains.anko.startActivityForResult
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
+import org.wit.quest.models.QuestModel
 
 class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigationItemSelectedListener{
 
@@ -24,7 +26,9 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
 
     app = application as MainApp
 
-    val toggle = ActionBarDrawerToggle(
+    info(app.users.findAll())
+
+val toggle = ActionBarDrawerToggle(
         this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()

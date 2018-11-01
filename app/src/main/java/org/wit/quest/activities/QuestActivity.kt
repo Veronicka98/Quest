@@ -76,16 +76,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
       edit = true
 
-      var index = app.quests.indexOf(quest)
+      var index = app.users.indexOfQuests(quest)
 
-      if (index + 1 < app.quests.size()) {
-        downQuest = app.quests.findAll()[index + 1]
+      if (index + 1 < app.users.sizeQuests()) {
+        downQuest = app.users.findAllQuests()[index + 1]
       } else {
         imageButtonDown.visibility = View.GONE
       }
 
       if (index > 0) {
-        upQuest = app.quests.findAll()[index - 1]
+        upQuest = app.users.findAllQuests()[index - 1]
       } else {
         imageButtonUp.visibility = View.GONE
       }
@@ -234,7 +234,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         finish()
       }
       R.id.item_delete -> {
-        app.quests.delete(quest)
+        app.users.deleteQuest(quest)
         setResult(RESULT_CANCELED)
         finish()
       }
@@ -250,14 +250,14 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         quest.visited = questVisited.isChecked
 
         if (edit) {
-          app.quests.update(quest.copy())
+          app.users.updateQuest(quest.copy())
           info("Update Button Pressed")
           setResult(201)
           finish()
         } else {
           if (quest.name.isNotEmpty() && quest.townland.isNotEmpty()
               && quest.country.isNotEmpty()) {
-            app.quests.create(quest.copy())
+            app.users.createQuest(quest.copy())
             info("Add Buttom Pressed")
           } else {
             toast (R.string.toast_promptAdd)

@@ -11,4 +11,12 @@ interface UserStore {
   fun signup(user: UserModel): Boolean
   fun getLoggedIn() : UserModel
   fun logOut()
+
+  fun createQuest(quest: QuestModel)
+  fun visited() : Int
+  fun updateQuest(quest: QuestModel)
+  fun deleteQuest(quest: QuestModel)
+  fun sizeQuests() : Int
+  fun indexOfQuests(quest: QuestModel): Int
+  fun findAllQuests(): MutableList<QuestModel>
 }

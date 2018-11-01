@@ -7,13 +7,14 @@ import org.wit.quest.models.*
 
 class MainApp : Application(), AnkoLogger {
 
-  lateinit var quests: QuestStore
+//  lateinit var quests: QuestStore
   lateinit var users: UserStore
 
   override fun onCreate() {
     super.onCreate()
-    quests = QuestJSONStore(applicationContext)
+//    quests = QuestJSONStore(applicationContext)
     users = UserJSONStore(applicationContext)
+
     info("Quest App Started")
   }
 

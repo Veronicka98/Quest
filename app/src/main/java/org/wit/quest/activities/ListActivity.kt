@@ -44,7 +44,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
   }
 
   private fun loadQuests() {
-    showQuests ( app.quests.findAll())
+    showQuests ( app.users.findAllQuests())
   }
 
   fun showQuests (quests: List<QuestModel>) {

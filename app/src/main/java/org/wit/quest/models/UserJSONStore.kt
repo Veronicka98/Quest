@@ -47,6 +47,7 @@ class UserJSONStore : UserStore, AnkoLogger {
       foundUser.email = user.email
       foundUser.password = user.password
       foundUser.profileImage = user.profileImage
+      foundUser.quests = user.quests
 
       logAll()
       serialize()
@@ -71,6 +72,7 @@ class UserJSONStore : UserStore, AnkoLogger {
     var foundUser: UserModel? = users.find { u -> u.email == user.email && u.password == user.password }
     if (foundUser != null) {
       loggedIn = foundUser
+      logAll()
       return false // login success
     }
     return true // login failed
@@ -96,6 +98,71 @@ class UserJSONStore : UserStore, AnkoLogger {
     return users.indexOf(user)
   }
 
+
+  override fun createQuest(quest: QuestModel) {
+    quest.id = generateRandomId()
+    loggedIn.quests.add(quest)
+    serialize()
+  }
+
+  override fun visited(): Int {
+    var no_visited = 0
+    loggedIn.quests.forEach{
+      if (it.visited) no_visited++
+    }
+    return no_visited
+  }
+
+  override fun updateQuest(quest: QuestModel) {
+    var foundQuest: QuestModel? = loggedIn.quests.find { q -> q.id == quest.id }
+    if (foundQuest != null) {
+      foundQuest.name = quest.name
+      foundQuest.townland = quest.townland
+      foundQuest.country = quest.country
+
+      foundQuest.image = quest.image
+      foundQuest.image1 = quest.image1
+      foundQuest.image2 = quest.image2
+      foundQuest.image3 = quest.image3
+
+      foundQuest.date = quest.date
+
+      foundQuest.description = quest.description
+      foundQuest.notes = quest.notes
+      foundQuest.rating = quest.rating
+      foundQuest.visited = quest.visited
+
+      foundQuest.lat = quest.lat
+      foundQuest.lng = quest.lng
+      foundQuest.zoom = quest.zoom
+
+      logAllQuests()
+      serialize()
+    }
+  }
+
+  override fun deleteQuest(quest: QuestModel) {
+    if (quest != null) {
+      loggedIn.quests.remove(quest)
+    }
+  }
+
+  fun logAllQuests() {
+    loggedIn.quests.forEach { info("${it}") }
+  }
+
+  override fun sizeQuests(): Int {
+    return loggedIn.quests.size
+  }
+
+  override fun indexOfQuests(quest: QuestModel): Int {
+    return loggedIn.quests.indexOf(quest)
+  }
+
+  override fun findAllQuests(): MutableList<QuestModel> {
+    return loggedIn.quests
+  }
+
   private fun serialize() {
     val jsonString = gsonUserBuilder.toJson(users, listUserType)
     write(context, USER_JSON_FILE, jsonString)
@@ -105,4 +172,5 @@ class UserJSONStore : UserStore, AnkoLogger {
     val jsonString = read(context, USER_JSON_FILE)
     users = Gson().fromJson(jsonString, listUserType)
   }
+
 }

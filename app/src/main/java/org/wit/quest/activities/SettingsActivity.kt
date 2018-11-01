@@ -39,8 +39,8 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
       password.text = "Password: " + user.password
     }
 
-    no_quests.text = "Number of quests: " + app.quests.size()
-    quests_visited.text = "Quests Visited: " + app.quests.visited()
+    no_quests.text = "Number of quests: " + app.users.sizeQuests()
+    quests_visited.text = "Quests Visited: " + app.users.visited()
 
     val toggle = ActionBarDrawerToggle(
         this, drawer_layout, toolbarSettings, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
