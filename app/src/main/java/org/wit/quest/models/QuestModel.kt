@@ -12,10 +12,6 @@ data class QuestModel (
     var country: String = "",
 
     var images : ArrayList<String> = ArrayList(),
-//    var image: String = "",
-//    var image1: String = "",
-//    var image2: String = "",
-//    var image3: String = "",
 
     var lat: Double = 0.0,
     var lng: Double = 0.0,

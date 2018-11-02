@@ -14,8 +14,8 @@ class FullscreenActivity : AppCompatActivity() {
 
     setContentView(R.layout.activity_fullscreen)
 
+    // get image from intent to display
     if (intent.hasExtra("image")) {
-
       var image = intent.extras.getString("image")
       fullscreenImage.setImageBitmap(readImageFromPath(this, image))
     }

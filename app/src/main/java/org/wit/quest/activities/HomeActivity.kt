@@ -25,8 +25,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
 
     app = application as MainApp
 
-    info(app.users.findAll())
-
+    // add navigation drawer
     val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
@@ -35,6 +34,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
   }
 
   override fun onBackPressed() {
+    // close drawer when back pressed
     if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
       drawer_layout.closeDrawer(GravityCompat.START)
     } else {
@@ -43,6 +43,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    // handle menu item selection
     when (item.itemId) {
       R.id.item_add -> startActivityForResult<QuestActivity>(200)
       R.id.item_list -> startActivityForResult<ListActivity>(200)

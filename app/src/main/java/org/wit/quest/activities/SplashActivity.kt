@@ -12,6 +12,7 @@ class SplashActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_splash)
 
+    // show splash activity for 5 seconds
     Handler().postDelayed({
       val intent = Intent(this, LoginActivity::class.java)
       startActivity(intent)

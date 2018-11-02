@@ -30,10 +30,12 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
 
     app = application as MainApp
 
+    // add quests to list
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     loadQuests()
 
+    // add navigation drawer
     val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbarList, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
@@ -41,10 +43,12 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
     nav_view.setNavigationItemSelectedListener(this)
   }
 
+  // load quests
   private fun loadQuests() {
     showQuests(app.users.findAllQuests())
   }
 
+  // load quests into adaptor to display as list
   fun showQuests (quests: List<QuestModel>) {
     recyclerView.adapter = QuestAdaptor(quests, this)
     recyclerView.adapter!!.notifyDataSetChanged()
@@ -55,11 +59,13 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
     super.onActivityResult(requestCode, resultCode, data)
   }
 
+  // start quest activity with quest clicked on
   override fun onQuestClick(quest: QuestModel) {
     startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", quest), 201)
   }
 
   override fun onBackPressed() {
+    // close drawer on back pressed
     if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
       drawer_layout.closeDrawer(GravityCompat.START)
     } else {
@@ -68,6 +74,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    // handle menu item selection
     when (item.itemId) {
       R.id.item_home -> startActivityForResult<HomeActivity>(200)
       R.id.item_add -> startActivityForResult<QuestActivity>(200)

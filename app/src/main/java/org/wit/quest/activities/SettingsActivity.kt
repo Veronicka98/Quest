@@ -30,31 +30,39 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
 
     app = application as MainApp
 
+    // get logged in user
     user = app.users.getLoggedIn()
+    // set profile image
     profileImage.setImageBitmap(readImageFromPath(this, user.profileImage))
 
+    // set user details
     if (user != null) {
       username.text = "Username: " + user.email
       password.text = "Password: " + user.password
     }
 
+    // set statistics
     no_quests.text = "Number of quests: " + app.users.sizeQuests()
     quests_visited.text = "Quests Visited: " + app.users.visited()
 
+    // add navigation drawer
     val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbarSettings, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
 
+    // choose profile image
     chooseProfileImage.setOnClickListener {
       showImagePicker(this, 1)
     }
 
+    // delete profile button clicks
     deleteProfile.setOnClickListener {
       app.users.delete(user)
       startActivity(intentFor<LoginActivity>())
       finish()
     }
 
+    // logout button click
     logout.setOnClickListener {
       app.users.logOut()
       startActivity(intentFor<LoginActivity>())
@@ -68,6 +76,7 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
     super.onActivityResult(requestCode, resultCode, data)
     when (requestCode) {
 
+      // handle profile image pick
       1 -> {
         if (data != null) {
           if (data.data != null) {
@@ -80,6 +89,7 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
     }
   }
 
+  // close drawer on back pressed
   override fun onBackPressed() {
     if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
       drawer_layout.closeDrawer(GravityCompat.START)
@@ -89,6 +99,7 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    // handle menu item selection
     when (item.itemId) {
       R.id.item_home -> startActivityForResult<HomeActivity>(200)
       R.id.item_add -> startActivityForResult<QuestActivity>(200)
