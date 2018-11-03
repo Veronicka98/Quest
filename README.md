@@ -74,3 +74,32 @@ Quest is a Hillfort Explorer App powered by Kotlin.
     <img src="./images/v2_editdown.png" width="18%"/>
     <img src="./images/v2_icon.png" width="10%"/>
 </p>
+
+### v3.0
+* Select up to 4 images
+* Login
+* Sign up
+* Log out
+* Users and Quests Unified JSON
+* Settings: user profile and statistics
+
+#### Additional features
+* Fullscreen image mode
+* Profile image
+* Delete profile
+
+<p float="left">
+    <img src="./images/v3_login.jpg" width="18%"/>
+    <img src="./images/v3_home.jpg" width="18%"/>
+    <img src="./images/v3_profile.jpg" width="18%"/>
+    <img src="./images/v3_settings.jpg" width="18%"/>
+    <img src="./images/v3_list.jpg" width="18%"/>
+</p>
+
+<p float="left">
+    <img src="./images/v3_one.jpg" width="18%"/>
+    <img src="./images/v3_two.jpg" width="18%"/>
+    <img src="./images/v3_three.jpg" width="18%"/>
+    <img src="./images/v3_four.jpg" width="18%"/>
+    <img src="./images/v3_full.jpg" width="18%"/>
+</p>
