@@ -36,10 +36,41 @@ Quest is a Hillfort Explorer App powered by Kotlin.
   * Rating
 * Toolbar: Home, Create, List, Settings
 
+#### Additional features
+* Rating
+* Townland
+* Country
+* Text input label float on top of text
+* Google icons
+
 <p float="left">
     <img src="./images/v1_home.png" width="18%"/>
     <img src="./images/v1_list.png" width="18%"/>
     <img src="./images/v1_add.png" width="18%"/>
     <img src="./images/v1_new.png" width="18%"/>
     <img src="./images/v1_edit.png" width="18%"/>
+</p>
+
+### v2.0
+* Navigation Drawer
+* Delete Quest
+* Splash Screen
+
+#### Additional features
+* Up / Down Quest transition in edit mode
+* Remove text field focus (keyboard popup)
+
+<p float="left">
+    <img src="./images/v2_splash.png" width="18%"/>
+    <img src="./images/v2_home.png" width="18%"/>
+    <img src="./images/v2_navdrawer.png" width="18%"/>
+    <img src="./images/v2_list.png" width="18%"/>
+    <img src="./images/v2_settings.png" width="18%"/>
+</p>
+
+<p float="left">
+    <img src="./images/v2_new.png" width="18%"/>
+    <img src="./images/v2_editup.png" width="18%"/>
+    <img src="./images/v2_editdown.png" width="18%"/>
+    <img src="./images/v2_icon.png" width="10%"/>
 </p>
