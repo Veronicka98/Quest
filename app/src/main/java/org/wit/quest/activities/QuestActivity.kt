@@ -115,14 +115,6 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       showImagePicker(this, IMAGE_REQUEST)
     }
 
-    // send images to fullscreen activity if clicked
-    for(i in quest.images) {
-      imgs[quest.images.indexOf(i)].setOnClickListener{
-        startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", i), FULLSCREEN)
-        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-      }
-    }
-
     // open new quest edit activity if up button is pressed
     imageButtonUp.setOnClickListener{
         startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
@@ -177,6 +169,11 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
                 imgs[i].visibility = View.VISIBLE
                 quest.images.add(data.clipData.getItemAt(i).uri.toString())
                 imgs[i].setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
+                // send image to fullscreen activity if clicked
+                imgs[i].setOnClickListener{
+                  startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", data.clipData.getItemAt(i).uri.toString()), FULLSCREEN)
+                  overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                }
 
               }
             }
