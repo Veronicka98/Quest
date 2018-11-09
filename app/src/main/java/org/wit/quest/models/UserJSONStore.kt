@@ -1,12 +1,15 @@
 package org.wit.quest.models
 
 import android.content.Context
+import android.os.Environment
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.quest.helpers.*
+import java.io.File
+import java.io.FileInputStream
 import java.util.*
 
 val USER_JSON_FILE = "users.json"
@@ -40,6 +43,17 @@ class UserJSONStore : UserStore, AnkoLogger {
   // create new user
   override fun create(user: UserModel) {
     user.id = generateRandomId()
+
+    var q1 = QuestModel(0, "Dún Aonghasa", "Kilmurvy, Galway", "Ireland", ArrayList(), 53.1259, -9.766364, 15f, "", "", "", false, 1F)
+    var q2 = QuestModel(0, "Mullaghnashee", "Fairymount Hill, Roscommon", "Ireland", ArrayList(), 53.841915,  -8.487268, 15f, "", "","", false, 1F)
+    var q3 = QuestModel(0, "Keeston Castle", "Pembrokeshire", "Britain", ArrayList(),  51.835147 , -5.051843, 15f, "", "","", false, 1F)
+    q1.id = generateRandomId()
+    q2.id = generateRandomId()
+    q3.id = generateRandomId()
+    user.quests.add(q1)
+    user.quests.add(q2)
+    user.quests.add(q3)
+
     users.add(user)
     serialize()
   }
