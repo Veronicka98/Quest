@@ -11,6 +11,7 @@
     <string name="menu_cancel">Cancel</string>
     <string name="menu_home">Home</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_map">Map</string>
 
     <!--Fields-->
     <string name="hint_questName">Name</string>
@@ -23,6 +24,13 @@
     <string name="hint_Description">Description</string>
     <string name="hint_Notes">Notes</string>
     <string name="hint_visited">VISITED</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_profile">Logged In User</string>
+    <string name="hint_stats">Statistics</string>
+    <string name="hint_no_quests">Number of Quests</string>
+    <string name="hint_no_visited">Quests Visited</string>
+    <string name="profile_description">Profile Description</string>
 
     <!--Prompts-->
     <string name="toast_promptAdd">Please fill out all fields</string>
@@ -61,17 +69,10 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
 
-    <string name="title_activity_fullscreen">Fullscreen Activity</string>
+    <!--Buttons-->
+    <string name="button_user">Select Profile Image</string>
     <string name="menu_login">Login</string>
     <string name="action_sign_up">Sign Up</string>
-    <string name="hint_username">Username</string>
-    <string name="hint_password">Password</string>
-    <string name="button_user">Select Profile Image</string>
-    <string name="hint_profile">Logged In User</string>
-    <string name="hint_stats">Statistics</string>
-    <string name="hint_no_quests">Number of Quests</string>
-    <string name="hint_no_visited">Quests Visited</string>
-    <string name="profile_description">Profile Description</string>
     <string name="button_delete_user">Delete Profile</string>
     <string name="button_logout">Logout</string>
 

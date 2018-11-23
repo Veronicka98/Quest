@@ -21,6 +21,12 @@
                 android:icon="@drawable/round_not_listed_location_white_18dp"
                 android:title="@string/menu_list"/>
 
+        <item
+                android:id="@+id/item_map"
+                android:icon="@drawable/round_not_listed_location_white_18dp"
+                android:title="@string/menu_map"/>
+
+
 
         <item
                 android:id="@+id/item_setting"

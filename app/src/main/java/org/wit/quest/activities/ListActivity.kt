@@ -79,6 +79,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
       R.id.item_home -> startActivityForResult<HomeActivity>(200)
       R.id.item_add -> startActivityForResult<QuestActivity>(200)
       R.id.item_setting -> startActivityForResult<SettingsActivity>(200)
+      R.id.item_map -> startActivityForResult<QuestMapsActivity>(200)
     }
 
     drawer_layout.closeDrawer(GravityCompat.START)
