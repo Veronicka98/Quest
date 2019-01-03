@@ -181,7 +181,7 @@ class UserJSONStore : UserStore, AnkoLogger {
     return loggedIn.quests.size
   }
 
-  // index of quets
+  // index of queSts
   override fun indexOfQuests(quest: QuestModel): Int {
     return loggedIn.quests.indexOf(quest)
   }
