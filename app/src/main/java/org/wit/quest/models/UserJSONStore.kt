@@ -44,9 +44,9 @@ class UserJSONStore : UserStore, AnkoLogger {
   override fun create(user: UserModel) {
     user.id = generateRandomId()
 
-    var q1 = QuestModel(0, "Dún Aonghasa", "Kilmurvy, Galway", "Ireland", ArrayList(), 53.1259, -9.766364, 15f, "", "", "", false, 1F)
-    var q2 = QuestModel(0, "Mullaghnashee", "Fairymount Hill, Roscommon", "Ireland", ArrayList(), 53.841915,  -8.487268, 15f, "", "","", false, 1F)
-    var q3 = QuestModel(0, "Keeston Castle", "Pembrokeshire", "Britain", ArrayList(),  51.835147 , -5.051843, 15f, "", "","", false, 1F)
+    var q1 = QuestModel(0, "Dún Aonghasa", "Kilmurvy, Galway", "Ireland", ArrayList(), 53.1259, -9.766364, 15f, "", "", "", false, false, 1F)
+    var q2 = QuestModel(0, "Mullaghnashee", "Fairymount Hill, Roscommon", "Ireland", ArrayList(), 53.841915,  -8.487268, 15f, "", "","", false,false,  1F)
+    var q3 = QuestModel(0, "Keeston Castle", "Pembrokeshire", "Britain", ArrayList(),  51.835147 , -5.051843, 15f, "", "","", false, false, 1F)
     q1.id = generateRandomId()
     q2.id = generateRandomId()
     q3.id = generateRandomId()
@@ -155,6 +155,7 @@ class UserJSONStore : UserStore, AnkoLogger {
       foundQuest.notes = quest.notes
       foundQuest.rating = quest.rating
       foundQuest.visited = quest.visited
+      foundQuest.favourite = quest.favourite
       foundQuest.lat = quest.lat
       foundQuest.lng = quest.lng
       foundQuest.zoom = quest.zoom

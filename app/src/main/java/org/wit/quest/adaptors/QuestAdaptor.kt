@@ -1,5 +1,6 @@
 package org.wit.quest.adaptors
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -24,12 +25,12 @@ class QuestAdaptor constructor(private var quests: List<QuestModel>,
   override fun onBindViewHolder(holder: MainHolder, position: Int) {
     val quest = quests[holder.adapterPosition]
     holder.bind(quest, listener)
+
   }
 
   override fun getItemCount(): Int = quests.size
 
   class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
 
     var imgs : ArrayList<ImageView> = ArrayList()
 

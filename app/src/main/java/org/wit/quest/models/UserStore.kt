@@ -19,4 +19,5 @@ interface UserStore {
   fun sizeQuests() : Int
   fun indexOfQuests(quest: QuestModel): Int
   fun findAllQuests(): MutableList<QuestModel>
+
 }

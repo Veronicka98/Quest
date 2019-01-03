@@ -71,6 +71,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
       questDescription.setText(quest.description)
       questNotes.setText(quest.notes)
       questVisited.isChecked = quest.visited
+      questFavourite.isChecked = quest.favourite
       questRating.rating = quest.rating
 
       // set images
@@ -224,6 +225,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
         quest.notes = questNotes.text.toString()
         quest.rating = questRating.rating
         quest.visited = questVisited.isChecked
+        quest.favourite = questFavourite.isChecked
 
         if (edit) {
           // update existing quest

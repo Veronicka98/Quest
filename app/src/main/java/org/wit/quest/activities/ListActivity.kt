@@ -4,9 +4,11 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_list.*
 import org.jetbrains.anko.AnkoLogger
@@ -17,10 +19,12 @@ import org.wit.quest.adaptors.QuestAdaptor
 import org.wit.quest.adaptors.QuestListener
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.QuestModel
+import java.util.ArrayList
 
 class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationView.OnNavigationItemSelectedListener {
 
   lateinit var app: MainApp
+  val FAV = 1
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -45,7 +49,18 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
 
   // load quests
   private fun loadQuests() {
-    showQuests(app.users.findAllQuests())
+
+    if (intent.hasExtra("fav")) {
+      var q = app.users.findAllQuests()
+      var favs : ArrayList<QuestModel> = ArrayList()
+      q.forEach()
+      {
+        if (it.favourite == true) favs.add(it)
+      }
+      showQuests(favs)
+    } else {
+      showQuests(app.users.findAllQuests())
+    }
   }
 
   // load quests into adaptor to display as list
@@ -73,6 +88,17 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
     }
   }
 
+  // add toolbar menu
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.menu_fav, menu)
+    if (intent.hasExtra("fav")) {
+      menu!!.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.round_favorite_white_18dp))
+    }
+    return super.onCreateOptionsMenu(menu)
+  }
+
+
+
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     // handle menu item selection
     when (item.itemId) {
@@ -84,5 +110,25 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
 
     drawer_layout.closeDrawer(GravityCompat.START)
     return true
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    // hangle toolbar item selection
+    when (item?.itemId) {
+
+      // fav quests
+      R.id.item_fav -> {
+        var fav = 1
+        if (intent.hasExtra("fav")) {
+          startActivity(intentFor<ListActivity>())
+          finish()
+        } else {
+          startActivityForResult(intentFor<ListActivity>().putExtra("fav", fav), FAV)
+          finish()
+        }
+      }
+
+    }
+    return super.onOptionsItemSelected(item)
   }
 }

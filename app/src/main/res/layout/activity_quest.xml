@@ -112,6 +112,13 @@
                                     android:layout_height="match_parent"
                                     android:text="@string/button_addImage"
                                     android:theme="@style/PrimaryFlatButton"/>
+                            <CheckBox
+                                    android:text="@string/hint_favourite"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:textSize="14sp" android:layout_gravity="center_horizontal"
+                                    android:padding="5dp" android:layout_marginStart="15dp" android:layout_weight="1"
+                                    android:id="@+id/questFavourite"/>
                         </LinearLayout>
 
 
