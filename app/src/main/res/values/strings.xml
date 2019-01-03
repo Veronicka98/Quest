@@ -75,5 +75,6 @@
     <string name="action_sign_up">Sign Up</string>
     <string name="button_delete_user">Delete Profile</string>
     <string name="button_logout">Logout</string>
+    <string name="hint_nameclick">Click on marker for more information</string>
 
 </resources>

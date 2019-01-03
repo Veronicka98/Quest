@@ -6,6 +6,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
@@ -74,10 +75,18 @@ class QuestMapsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
   override fun onMarkerClick(marker: Marker): Boolean {
     currentName.text = marker.title
     app.users.findAllQuests().forEach() {
-      if (it.id == marker.tag) currentTownland.text = it.townland
+      if (it.id == marker.tag) {
+        currentTownland.text = it.townland
 
-      if (it.images.size != 0) map_questImage.setImageBitmap(readImageFromPath(this, it.images.get(0)))
-      else map_questImage.setImageBitmap(readImageFromPath(this, R.drawable.hillfort_placeholder))
+        map_questImage.visibility = View.GONE
+        map_questImageDefault.visibility = View.VISIBLE
+
+        if (it.images.size != 0) {
+          map_questImage.setImageBitmap(readImageFromPath(this, it.images.get(0)))
+          map_questImage.visibility = View.VISIBLE
+          map_questImageDefault.visibility = View.GONE
+        }
+      }
     }
     return false
   }
