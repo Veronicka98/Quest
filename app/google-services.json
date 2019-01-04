@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "124670015700",
+    "firebase_url": "https://quest-veronika.firebaseio.com",
+    "project_id": "quest-veronika",
+    "storage_bucket": "quest-veronika.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124670015700:android:441f2148bcc406df",
+        "android_client_info": {
+          "package_name": "org.wit.quest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124670015700-3ja9t6a6fnng02k9trqckqdk8k84ts4m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.wit.quest",
+            "certificate_hash": "d882374553be62b3d1d3b034bd079d78553d0b74"
+          }
+        },
+        {
+          "client_id": "124670015700-skhuhqthijq185n7nf97215pj1f7ka3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLc2Pbq3S8jaNzpZH7yS069p-FznEI5Ng"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124670015700-skhuhqthijq185n7nf97215pj1f7ka3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

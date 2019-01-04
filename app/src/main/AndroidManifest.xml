@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".views.login.LoginActivity"
+                android:name=".views.login.LoginView"
                 android:label="@string/title_activity_login"
                 android:parentActivityName=".views.login.SplashActivity">
             <meta-data
@@ -48,11 +48,11 @@
         <activity
                 android:name=".views.home.HomeActivity"
                 android:label="@string/app_name"
-                android:parentActivityName=".views.login.LoginActivity"
+                android:parentActivityName=".views.login.LoginView"
                 android:theme="@style/AppTheme">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.login.LoginActivity"/>
+                    android:value=".views.login.LoginView"/>
         </activity>
 
         <meta-data

@@ -10,16 +10,18 @@ import org.wit.quest.main.MainApp
 import org.wit.quest.models.UserModel
 import org.wit.quest.views.home.HomeActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginView : AppCompatActivity() {
 
   lateinit var app : MainApp
   var user = UserModel()
+
 
   public override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_login)
 
     app = application as MainApp
+
 
     // set up listeners for buttons
     signin.setOnClickListener {login()}

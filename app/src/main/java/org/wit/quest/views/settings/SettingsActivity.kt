@@ -16,7 +16,7 @@ import org.wit.quest.R
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.UserModel
 import org.wit.placemark.helpers.*
-import org.wit.quest.views.login.LoginActivity
+import org.wit.quest.views.login.LoginView
 import org.wit.quest.views.maps.QuestMapsView
 import org.wit.quest.views.home.HomeActivity
 import org.wit.quest.views.list.ListView
@@ -62,14 +62,14 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger, NavigationView.OnNavig
     // delete profile button clicks
     deleteProfile.setOnClickListener {
       app.users.delete(user)
-      startActivity(intentFor<LoginActivity>())
+      startActivity(intentFor<LoginView>())
       finish()
     }
 
     // logout button click
     logout.setOnClickListener {
       app.users.logOut()
-      startActivity(intentFor<LoginActivity>())
+      startActivity(intentFor<LoginView>())
       finish()
     }
 
