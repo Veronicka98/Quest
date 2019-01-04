@@ -76,6 +76,7 @@ class QuestView : AppCompatActivity(), AnkoLogger {
 
   fun showQuest(quest: QuestModel) {
 
+    this.quest = quest
     app = application as MainApp
 
     // image view placeholders
