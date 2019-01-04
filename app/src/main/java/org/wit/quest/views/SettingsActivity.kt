@@ -1,4 +1,4 @@
-package org.wit.quest.activities
+package org.wit.quest.views
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.helpers.showImagePicker

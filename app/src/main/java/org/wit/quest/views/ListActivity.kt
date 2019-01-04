@@ -1,4 +1,4 @@
-package org.wit.quest.activities
+package org.wit.quest.views
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
