@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
+import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.wit.placemark.helpers.readImage
 import org.wit.placemark.helpers.readImageFromPath
@@ -28,6 +29,8 @@ class QuestView : AppCompatActivity(), AnkoLogger {
 
   var upQuest : QuestModel = QuestModel()
   var downQuest : QuestModel = QuestModel()
+
+  lateinit var map: GoogleMap
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -60,6 +63,13 @@ class QuestView : AppCompatActivity(), AnkoLogger {
       startActivityForResult(intentFor<QuestView>().putExtra("quest_edit", downQuest), 201)
       overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_in_top)
       finish()
+    }
+
+
+    mapViewQuest.onCreate(savedInstanceState);
+    mapViewQuest.getMapAsync {
+      map = it
+      presenter.doConfigureMap(map)
     }
 
   }
@@ -214,4 +224,31 @@ class QuestView : AppCompatActivity(), AnkoLogger {
     }
     return super.onOptionsItemSelected(item)
   }
+
+
+  override fun onDestroy() {
+    super.onDestroy()
+    mapViewQuest.onDestroy()
+  }
+
+  override fun onLowMemory() {
+    super.onLowMemory()
+    mapViewQuest.onLowMemory()
+  }
+
+  override fun onPause() {
+    super.onPause()
+    mapViewQuest.onPause()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    mapViewQuest.onResume()
+  }
+
+  override fun onSaveInstanceState(outState: Bundle?) {
+    super.onSaveInstanceState(outState)
+    mapViewQuest.onSaveInstanceState(outState)
+  }
+
 }

@@ -1,4 +1,4 @@
-package org.wit.placemark.helpers
+package org.wit.quest.helpers
 
 import android.app.Activity
 import android.content.Intent

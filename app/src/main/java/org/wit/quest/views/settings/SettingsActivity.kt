@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
-import org.wit.placemark.helpers.showImagePicker
+import org.wit.quest.helpers.showImagePicker
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.UserModel
