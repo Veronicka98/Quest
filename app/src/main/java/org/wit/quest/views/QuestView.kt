@@ -16,7 +16,7 @@ import org.wit.placemark.helpers.readImage
 import org.wit.placemark.helpers.readImageFromPath
 import org.wit.quest.R
 
-class QuestActivity : AppCompatActivity(), AnkoLogger {
+class QuestView : AppCompatActivity(), AnkoLogger {
 
   lateinit var app : MainApp
   lateinit var presenter: QuestPresenter
@@ -48,16 +48,16 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     // choosing images
     chooseImage.setOnClickListener {presenter.doSelectImage()}
 
-    // open new quest edit activity if up button is pressed
+    // open new quest edit view if up button is pressed
     imageButtonUp.setOnClickListener{
-        startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", upQuest), 201)
+        startActivityForResult(intentFor<QuestView>().putExtra("quest_edit", upQuest), 201)
         overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_in_bottom)
         finish()
     }
 
-    // open new quest edit activity if down button is pressed
+    // open new quest edit view if down button is pressed
     imageButtonDown.setOnClickListener{
-      startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", downQuest), 201)
+      startActivityForResult(intentFor<QuestView>().putExtra("quest_edit", downQuest), 201)
       overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_in_top)
       finish()
     }
@@ -158,7 +158,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
                 imgs[i].visibility = View.VISIBLE
                 quest.images.add(data.clipData.getItemAt(i).uri.toString())
                 imgs[i].setImageBitmap(readImage(this, resultCode, data.clipData.getItemAt(i).uri))
-                // send image to fullscreen activity if clicked
+                // send image to fullscreen view if clicked
                 imgs[i].setOnClickListener{
                   startActivityForResult(intentFor<FullscreenActivity>().putExtra("image", data.clipData.getItemAt(i).uri.toString()), FULLSCREEN)
                   overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
@@ -188,7 +188,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
     // hangle toolbar item selection
     when (item?.itemId) {
 
-      // cancel quest activity
+      // cancel quest view
       R.id.item_cancel -> {
         presenter.doCancel()
       }

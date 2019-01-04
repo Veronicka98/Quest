@@ -22,11 +22,11 @@
             android:roundIcon="@mipmap/quest_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".views.QuestActivity">
+        <activity android:name=".views.QuestView">
         </activity>
         <activity android:name=".views.SettingsActivity">
         </activity>
-        <activity android:name=".views.ListActivity">
+        <activity android:name=".views.ListView">
         </activity>
         <activity
                 android:name=".views.SplashActivity"
@@ -63,11 +63,11 @@
                 android:resource="@array/preloaded_fonts"/>
 
         <activity
-                android:name=".views.MapsActivity"
+                android:name=".views.MapsView"
                 android:label="@string/title_activity_maps">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="org.wit.quest.views.QuestActivity"/>
+                    android:value="org.wit.quest.views.QuestView"/>
         </activity>
         <activity
                 android:name=".views.FullscreenActivity"

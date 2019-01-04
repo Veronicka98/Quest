@@ -115,8 +115,8 @@ class QuestMapsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     // handle menu item selection
     when (item.itemId) {
       R.id.item_home -> startActivityForResult<HomeActivity>(200)
-      R.id.item_list -> startActivityForResult<ListActivity>(200)
-      R.id.item_add -> startActivityForResult<QuestActivity>(200)
+      R.id.item_list -> startActivityForResult<ListView>(200)
+      R.id.item_add -> startActivityForResult<QuestView>(200)
       R.id.item_setting -> startActivityForResult<SettingsActivity>(200)
     }
 

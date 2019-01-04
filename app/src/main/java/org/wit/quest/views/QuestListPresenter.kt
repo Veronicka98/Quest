@@ -7,34 +7,34 @@ import org.wit.quest.main.MainApp
 import org.wit.quest.models.QuestModel
 
 
-class QuestListPresenter(val activity: ListActivity) {
+class QuestListPresenter(val view: ListView) {
   
   var app: MainApp
 
   init {
-    app = activity.application as MainApp
+    app = view.application as MainApp
   }
 
   fun getQuests() = app.users.findAllQuests()
 
   fun doAddQuest() {
-    activity.startActivityForResult<QuestActivity>(0)
+    view.startActivityForResult<QuestView>(0)
   }
 
   fun doHomeQuest() {
-    activity.startActivityForResult<HomeActivity>(0)
+    view.startActivityForResult<HomeActivity>(0)
   }
 
   fun doSettings() {
-    activity.startActivityForResult<SettingsActivity>(0)
+    view.startActivityForResult<SettingsActivity>(0)
   }
 
   fun doShowQuestsMap() {
-    activity.startActivity<QuestMapsActivity>()
+    view.startActivity<QuestMapsActivity>()
   }
 
   fun doEditQuest(quest: QuestModel) {
-    activity.startActivityForResult(activity.intentFor<QuestActivity>().putExtra("quest_edit", quest), 0)
+    view.startActivityForResult(view.intentFor<QuestView>().putExtra("quest_edit", quest), 0)
   }
 
 }

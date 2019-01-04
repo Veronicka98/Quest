@@ -1,20 +1,13 @@
 package org.wit.quest.views
 
-import android.app.Activity
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.quest.R
-import org.wit.quest.models.Location
 
-class MapsActivity : AppCompatActivity(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
+class MapsView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
   private lateinit var map: GoogleMap
   lateinit var presenter: MapsPresenter

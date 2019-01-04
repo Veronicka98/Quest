@@ -12,12 +12,11 @@ import org.jetbrains.anko.toast
 import org.wit.placemark.helpers.showImagePicker
 
 
-class QuestPresenter(val activity: QuestActivity)  {
+class QuestPresenter(val view: QuestView)  {
 
   val IMAGE_REQUEST = 1
   val LOCATION_REQUEST = 2
-  val FULLSCREEN = 3
-
+  
   lateinit var app : MainApp
   var quest = QuestModel()
   val location = Location(52.245696, -7.139102, 15f) //default location
@@ -25,11 +24,11 @@ class QuestPresenter(val activity: QuestActivity)  {
   var imgs : ArrayList<ImageView> = ArrayList()
   
   init {
-    app = activity.application as MainApp
-    if (activity.intent.hasExtra("quest_edit")) {
+    app = view.application as MainApp
+    if (view.intent.hasExtra("quest_edit")) {
       edit = true
-      quest = activity.intent.extras.getParcelable<QuestModel>("quest_edit")
-      activity.showQuest(quest)
+      quest = view.intent.extras.getParcelable<QuestModel>("quest_edit")
+      view.showQuest(quest)
     }
   }
 
@@ -57,35 +56,35 @@ class QuestPresenter(val activity: QuestActivity)  {
     if (edit) {
       // update existing quest
       app.users.updateQuest(quest.copy())
-      activity.toast("Saving Quest")
-      activity.setResult(201)
-      activity.finish()
+      view.toast("Saving Quest")
+      view.setResult(201)
+      view.finish()
     } else {
       // create new quest
       if (quest.name.isNotEmpty() && quest.townland.isNotEmpty() && quest.country.isNotEmpty()) {
         app.users.createQuest(quest.copy())
-        activity.toast("Adding Quest")
+        view.toast("Adding Quest")
       } else {
-        activity.toast(R.string.toast_promptAdd)
+        view.toast(R.string.toast_promptAdd)
       }
-      activity.setResult(200)
-      activity.finish()
+      view.setResult(200)
+      view.finish()
     }
   }
 
   fun doCancel() {
-    activity.setResult(AppCompatActivity.RESULT_CANCELED)
-    activity.finish()
+    view.setResult(AppCompatActivity.RESULT_CANCELED)
+    view.finish()
   }
 
   fun doDelete(quest: QuestModel) {
     app.users.deleteQuest(quest)
-    activity.setResult(AppCompatActivity.RESULT_CANCELED)
-    activity.finish()
+    view.setResult(AppCompatActivity.RESULT_CANCELED)
+    view.finish()
   }
 
   fun doSelectImage() {
-    showImagePicker(activity, IMAGE_REQUEST)
+    showImagePicker(view, IMAGE_REQUEST)
   }
 
   fun doSetLocation() {
@@ -94,7 +93,7 @@ class QuestPresenter(val activity: QuestActivity)  {
       location.lng = quest.lng
       location.zoom = quest.zoom
     }
-    activity.startActivityForResult(activity.intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+    view.startActivityForResult(view.intentFor<MapsView>().putExtra("location", location), LOCATION_REQUEST)
   }
 
 }

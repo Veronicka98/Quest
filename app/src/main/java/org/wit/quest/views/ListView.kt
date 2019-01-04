@@ -13,7 +13,6 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_list.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivityForResult
 import org.wit.quest.R
 import org.wit.quest.adaptors.QuestAdaptor
 import org.wit.quest.adaptors.QuestListener
@@ -21,7 +20,7 @@ import org.wit.quest.main.MainApp
 import org.wit.quest.models.QuestModel
 import java.util.ArrayList
 
-class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationView.OnNavigationItemSelectedListener {
+class ListView : AppCompatActivity(), AnkoLogger, QuestListener, NavigationView.OnNavigationItemSelectedListener {
 
   lateinit var app: MainApp
   val FAV = 1
@@ -77,7 +76,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
     super.onActivityResult(requestCode, resultCode, data)
   }
 
-  // start quest activity with quest clicked on
+  // start quest view with quest clicked on
   override fun onQuestClick(quest: QuestModel) {
     presenter.doEditQuest(quest)
   }
@@ -121,10 +120,10 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
       R.id.item_fav -> {
         var fav = 1
         if (intent.hasExtra("fav")) {
-          startActivity(intentFor<ListActivity>())
+          startActivity(intentFor<ListView>())
           finish()
         } else {
-          startActivityForResult(intentFor<ListActivity>().putExtra("fav", fav), FAV)
+          startActivityForResult(intentFor<ListView>().putExtra("fav", fav), FAV)
           finish()
         }
       }
