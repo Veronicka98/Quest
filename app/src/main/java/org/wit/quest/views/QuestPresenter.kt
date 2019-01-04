@@ -78,7 +78,7 @@ class QuestPresenter(val activity: QuestActivity)  {
     activity.finish()
   }
 
-  fun doDelete() {
+  fun doDelete(quest: QuestModel) {
     app.users.deleteQuest(quest)
     activity.setResult(AppCompatActivity.RESULT_CANCELED)
     activity.finish()

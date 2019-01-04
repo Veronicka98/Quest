@@ -21,8 +21,6 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app : MainApp
   lateinit var presenter: QuestPresenter
   var quest = QuestModel()
-  val location = Location(52.245696, -7.139102, 15f) //default location
-  var edit = false
   val IMAGE_REQUEST = 1
   val LOCATION_REQUEST = 2
   val FULLSCREEN = 3
@@ -67,7 +65,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
   }
 
   fun showQuest(quest: QuestModel) {
-    
+
     app = application as MainApp
 
     // image view placeholders
@@ -197,7 +195,7 @@ class QuestActivity : AppCompatActivity(), AnkoLogger {
 
       // delete quest
       R.id.item_delete -> {
-        presenter.doDelete()
+        presenter.doDelete(quest)
       }
 
       // save quest
