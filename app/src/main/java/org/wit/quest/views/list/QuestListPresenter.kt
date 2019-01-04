@@ -1,10 +1,14 @@
-package org.wit.quest.views
+package org.wit.quest.views.list
 
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.QuestModel
+import org.wit.quest.views.home.HomeActivity
+import org.wit.quest.views.maps.QuestMapsView
+import org.wit.quest.views.settings.SettingsActivity
+import org.wit.quest.views.quest.QuestView
 
 
 class QuestListPresenter(val view: ListView) {
@@ -30,7 +34,7 @@ class QuestListPresenter(val view: ListView) {
   }
 
   fun doShowQuestsMap() {
-    view.startActivity<QuestMapsActivity>()
+    view.startActivity<QuestMapsView>()
   }
 
   fun doEditQuest(quest: QuestModel) {

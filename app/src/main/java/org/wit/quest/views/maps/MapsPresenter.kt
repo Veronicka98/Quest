@@ -1,4 +1,4 @@
-package org.wit.quest.views
+package org.wit.quest.views.maps
 
 import android.app.Activity
 import android.content.Intent
@@ -8,6 +8,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.quest.models.Location
+import org.wit.quest.views.MapsView
 
 class MapsPresenter(val activity: MapsView) {
 

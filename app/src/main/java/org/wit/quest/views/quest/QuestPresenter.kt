@@ -1,4 +1,4 @@
-package org.wit.quest.views
+package org.wit.quest.views.quest
 
 
 import android.support.v7.app.AppCompatActivity
@@ -10,13 +10,14 @@ import org.wit.quest.models.Location
 import org.wit.quest.models.QuestModel
 import org.jetbrains.anko.toast
 import org.wit.placemark.helpers.showImagePicker
+import org.wit.quest.views.MapsView
 
 
 class QuestPresenter(val view: QuestView)  {
 
   val IMAGE_REQUEST = 1
   val LOCATION_REQUEST = 2
-  
+
   lateinit var app : MainApp
   var quest = QuestModel()
   val location = Location(52.245696, -7.139102, 15f) //default location

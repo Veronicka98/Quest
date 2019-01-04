@@ -1,4 +1,4 @@
-package org.wit.quest.views
+package org.wit.quest.views.home
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +11,10 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivityForResult
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
+import org.wit.quest.views.maps.QuestMapsView
+import org.wit.quest.views.settings.SettingsActivity
+import org.wit.quest.views.list.ListView
+import org.wit.quest.views.quest.QuestView
 
 class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigationItemSelectedListener{
 
@@ -47,7 +51,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger , NavigationView.OnNavigati
       R.id.item_add -> startActivityForResult<QuestView>(200)
       R.id.item_list -> startActivityForResult<ListView>(200)
       R.id.item_setting -> startActivityForResult<SettingsActivity>(200)
-      R.id.item_map -> startActivityForResult<QuestMapsActivity>(200)
+      R.id.item_map -> startActivityForResult<QuestMapsView>(200)
     }
 
     drawer_layout.closeDrawer(GravityCompat.START)

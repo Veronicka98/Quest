@@ -1,4 +1,4 @@
-package org.wit.quest.views
+package org.wit.quest.views.maps
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -19,8 +19,12 @@ import kotlinx.android.synthetic.main.content_quest_maps.*
 import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.helpers.readImageFromPath
 import org.wit.quest.main.MainApp
+import org.wit.quest.views.home.HomeActivity
+import org.wit.quest.views.list.ListView
+import org.wit.quest.views.quest.QuestView
+import org.wit.quest.views.settings.SettingsActivity
 
-class QuestMapsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, GoogleMap.OnMarkerClickListener {
+class QuestMapsView : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, GoogleMap.OnMarkerClickListener {
 
   lateinit var map: GoogleMap
   lateinit var app: MainApp

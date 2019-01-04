@@ -1,4 +1,4 @@
-package org.wit.quest.views
+package org.wit.quest.views.login
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +8,7 @@ import org.jetbrains.anko.intentFor
 import org.wit.quest.R
 import org.wit.quest.main.MainApp
 import org.wit.quest.models.UserModel
+import org.wit.quest.views.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package org.wit.quest.views
+package org.wit.quest.views.quest
 
 import android.content.Intent
 import org.jetbrains.anko.intentFor
