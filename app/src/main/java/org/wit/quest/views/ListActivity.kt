@@ -25,6 +25,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
 
   lateinit var app: MainApp
   val FAV = 1
+  lateinit var presenter: QuestListPresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -33,6 +34,8 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
     setSupportActionBar(toolbarList)
 
     app = application as MainApp
+
+    presenter = QuestListPresenter(this)
 
     // add quests to list
     val layoutManager = LinearLayoutManager(this)
@@ -51,7 +54,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
   private fun loadQuests() {
 
     if (intent.hasExtra("fav")) {
-      var q = app.users.findAllQuests()
+      var q = presenter.getQuests()
       var favs : ArrayList<QuestModel> = ArrayList()
       q.forEach()
       {
@@ -59,7 +62,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
       }
       showQuests(favs)
     } else {
-      showQuests(app.users.findAllQuests())
+      showQuests(presenter.getQuests())
     }
   }
 
@@ -76,7 +79,7 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
 
   // start quest activity with quest clicked on
   override fun onQuestClick(quest: QuestModel) {
-    startActivityForResult(intentFor<QuestActivity>().putExtra("quest_edit", quest), 201)
+    presenter.doEditQuest(quest)
   }
 
   override fun onBackPressed() {
@@ -97,15 +100,13 @@ class ListActivity : AppCompatActivity(), AnkoLogger, QuestListener, NavigationV
     return super.onCreateOptionsMenu(menu)
   }
 
-
-
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     // handle menu item selection
     when (item.itemId) {
-      R.id.item_home -> startActivityForResult<HomeActivity>(200)
-      R.id.item_add -> startActivityForResult<QuestActivity>(200)
-      R.id.item_setting -> startActivityForResult<SettingsActivity>(200)
-      R.id.item_map -> startActivityForResult<QuestMapsActivity>(200)
+      R.id.item_home -> presenter.doHomeQuest()
+      R.id.item_add -> presenter.doAddQuest()
+      R.id.item_setting -> presenter.doSettings()
+      R.id.item_map -> presenter.doShowQuestsMap()
     }
 
     drawer_layout.closeDrawer(GravityCompat.START)
